@@ -1,0 +1,42 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_homepage_left_drawer"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/img_avator"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_new_default_avatar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_avator"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_18"
+        android:text="@string/login"
+        android:textColor="@color/color_home_item_bg"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/drawerList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/all_title_height"
+        android:text="@string/app_name"
+        android:textColor="@color/color_home_item_bg"/>
+</RelativeLayout>
