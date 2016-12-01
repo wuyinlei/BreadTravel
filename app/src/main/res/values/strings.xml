@@ -2,7 +2,6 @@
     <string name="app_name">BreadTravel</string>
 
 
-
     <string name="listview_header_hint_normal">下拉刷新</string>
     <string name="listview_header_hint_release">释放立即刷新</string>
     <string name="listview_loading">正在加载...</string>
@@ -30,9 +29,12 @@
     <string name="drawer_open">打开</string>
     <string name="drawer_close">关闭</string>
     <string name="login">请登录</string>
-    
-    
+
+
     <string name="hot_trip">热门游记</string>
     <string name="bread_order">面包订制</string>
     <string name="setting">设置</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

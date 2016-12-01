@@ -1,4 +1,4 @@
-package com.renren.breadtravel.widget;
+package com.renren.breadtravel.fragment;
 
 
 import android.app.Fragment;
@@ -68,6 +68,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         editor.apply();
     }
 
+    /**
+     * 读取设置的值
+     * @param context  上下文
+     * @param settingName  name
+     * @param settingValue  value
+     * @return  保存的值
+     */
     public static String readShareSetting(Context context, String settingName, String settingValue) {
         SharedPreferences prefs = context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
         return prefs.getString(settingName, settingValue);
@@ -104,9 +111,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     public void setUp(int fragmentId, DrawerLayout drawerLayout) {
         mFragmentContainerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
-        mDrawerLayout
-                .setStatusBarBackgroundColor(
-                        getResources().getColor(R.color.myPrimaryDarkColor));
+//        mDrawerLayout
+//                .setStatusBarBackgroundColor(
+//                        getResources().getColor(R.color.myPrimaryDarkColor));
 
         mActionBarDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, null
                 , R.string.drawer_open, R.string.drawer_close) {
