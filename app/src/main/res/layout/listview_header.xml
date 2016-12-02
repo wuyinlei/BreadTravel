@@ -59,6 +59,7 @@
             android:id="@+id/listview_header_progressbar"
             android:layout_centerVertical="true"
             android:layout_width="30dip"
+            android:visibility="invisible"
             android:layout_toLeftOf="@id/listview_header_text"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="40dp"

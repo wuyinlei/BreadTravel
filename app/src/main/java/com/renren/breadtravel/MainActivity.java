@@ -1,12 +1,16 @@
 package com.renren.breadtravel;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.renren.breadtravel.base.BaseActivity;
 import com.renren.breadtravel.fragment.BreadOrderFragment;
 import com.renren.breadtravel.fragment.HotTripFragment;
@@ -50,14 +54,46 @@ public class MainActivity extends BaseActivity implements
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if (mNavigationDrawerFragment.isDrawerOpen()) {
-            mNavigationDrawerFragment.closeDrawer();
-        } else {
-            super.onBackPressed();
-        }
+//    @Override
+//    public void onBackPressed() {
+//        if (mNavigationDrawerFragment.isDrawerOpen()) {
+//            mNavigationDrawerFragment.closeDrawer();
+//
+//        } else {
+//            super.onBackPressed();
+//        }
+//
+//    }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            if(!mNavigationDrawerFragment.isDrawerOpen()) {
+                //双击退出逻辑
+                new MaterialDialog.Builder(MainActivity.this)
+                        .title(getResources().getString(R.string.tip))
+                        .content(getResources().getString(R.string.exit))
+                        .negativeText(getResources().getString(R.string.cancel))
+                        .onNegative(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                            }
+                        }).positiveText(getResources().getString(R.string.ok))
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                finish();
+                                dialog.dismiss();
+                            }
+                        }).show();
+                return true;
+            } else {
+                mNavigationDrawerFragment.closeDrawer();
+                return false;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

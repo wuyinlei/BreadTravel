@@ -41,5 +41,12 @@
         <item name="riv_corner_radius">6dp</item>
     </style>
 
+    <style name="DetailStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
     <color name="photo_tint">#7F101010</color>
 </resources>

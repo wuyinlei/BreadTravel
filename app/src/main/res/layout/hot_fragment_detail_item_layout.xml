@@ -13,6 +13,8 @@
         >
         <include
             layout="@layout/card_photo"/>
+
+        <include layout="@layout/hot_fragment_detail_item_desc_layout"/>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
