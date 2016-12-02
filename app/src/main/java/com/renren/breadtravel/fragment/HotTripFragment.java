@@ -2,6 +2,7 @@ package com.renren.breadtravel.fragment;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -19,11 +20,13 @@ import com.lzy.okgo.callback.StringCallback;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.adapter.DetailAdapter;
 import com.renren.breadtravel.base.BaseLeftFragment;
+import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.constant.HttpUrlPath;
 import com.renren.breadtravel.entity.BannerData;
 import com.renren.breadtravel.entity.DetailBean;
 import com.renren.breadtravel.entity.HotInnerCity;
 import com.renren.breadtravel.entity.HotOuterCity;
+import com.renren.breadtravel.ui.BannerDetailActivity;
 import com.renren.breadtravel.widget.banner.BannerPagerAdapter;
 import com.renren.breadtravel.widget.banner.MyPagerListener;
 import com.renren.breadtravel.widget.banner.ViewPagerIndicator;
@@ -278,8 +281,9 @@ public class HotTripFragment extends BaseLeftFragment {
         mBannerPagerAdapter.setOnClickListener(new BannerPagerAdapter.OnClickListener() {
             @Override
             public void onClick(View v, int position) {
-                Toast.makeText(getContext(),
-                        mBannerDatas.get(position).html_url, Toast.LENGTH_SHORT).show();
+                Intent intent  = new Intent(getActivity(), BannerDetailActivity.class);
+                intent.putExtra(Constants.WEB_VIEW_URL,mBannerDatas.get(position).getPlatform());
+                startActivity(intent);
             }
         });
         mViewPager.setAdapter(mBannerPagerAdapter);

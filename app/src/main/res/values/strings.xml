@@ -43,4 +43,11 @@
     <string name="tip">友情提示</string>
     <string name="day">天</string>
     <string name="view_count">次游览</string>
+
+
+    <string name="notification_content">热爱编程的小白\r\n\r\n
+QQ:1069584784(爱好交友)\r\n\r\n
+CSDN地址：http://blog.csdn.net/wuyinlei\r\n\r\n
+GitHub地址：https://github.com/wuyinlei\r\n\r\n
+欢迎访问和Fork</string>
 </resources>

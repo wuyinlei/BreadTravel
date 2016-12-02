@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_banner_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.renren.breadtravel.ui.BannerDetailActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/activity_home_title_bar"/>
+
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:layout_weight="22"/>
+
+
+    <FrameLayout
+        android:id="@+id/framelayout_notification"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="详情咨询:1069584784"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_16"/>
+    </FrameLayout>
+
+</LinearLayout>
