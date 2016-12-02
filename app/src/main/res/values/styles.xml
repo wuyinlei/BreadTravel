@@ -49,4 +49,18 @@
     </style>
 
     <color name="photo_tint">#7F101010</color>
+
+    <style name="SwipeBackLayout">
+        <item name="edge_size">0dp</item>
+    </style>
+
+    <!-- App Theme Light -->
+    <style name="BaseAppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+    <style name="AppThemeLight" parent="BaseAppThemeLight">
+    </style>
+
 </resources>
