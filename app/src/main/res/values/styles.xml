@@ -13,4 +13,11 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
+    <declare-styleable name="ViewPagerIndicator">
+        <attr name="numbers" format="integer"/>
+        <attr name="foreColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="gapWidth" format="float"/>
+    </declare-styleable>
+
 </resources>
