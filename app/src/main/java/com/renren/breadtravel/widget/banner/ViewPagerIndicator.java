@@ -46,7 +46,7 @@ public class ViewPagerIndicator extends View {
 
         mFroceColor = attributes.getColor(R.styleable.ViewPagerIndicator_foreColor, Color.BLUE);
         mBackgroundColor = attributes.getColor(R.styleable.ViewPagerIndicator_backgroundColor, Color.GRAY);
-        mNumbers = attributes.getInt(R.styleable.ViewPagerIndicator_numbers, 4);
+        mNumbers = attributes.getInt(R.styleable.ViewPagerIndicator_numbers, 5);
 
 
         //初始化画笔

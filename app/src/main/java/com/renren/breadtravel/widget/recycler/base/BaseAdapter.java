@@ -84,9 +84,9 @@ public abstract class BaseAdapter<T, H extends BaseViewHolder> extends RecyclerV
      *
      * @param list 填充的数据
      */
-    public void setDatas(Collection<T> list) {
-        this.datas.clear();
-        this.datas.addAll(list);
+    public void setDatas(List<T> list) {
+      //  this.datas.clear();
+        this.datas = list;
         notifyDataSetChanged();
     }
 

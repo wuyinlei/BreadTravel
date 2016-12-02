@@ -15,9 +15,9 @@ public class BannerData {
      * html_url : http://web.breadtrip.com/mobile/product_topic/2387718844/
      */
 
-    private String platform;
-    private String image_url;
-    private String html_url;
+    public String platform;
+    public String image_url;
+    public String html_url;
 
     public static BannerData objectFromData(String str) {
 

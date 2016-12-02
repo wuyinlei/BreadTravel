@@ -20,4 +20,26 @@
         <attr name="gapWidth" format="float"/>
     </declare-styleable>
 
+
+    <style name="Card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+
+        <item name="cardBackgroundColor">@android:color/white</item>
+        <item name="cardCornerRadius">@dimen/dp_6</item>
+        <item name="cardElevation">@dimen/dp_4</item>
+    </style>
+
+
+    <style name="CardPhoto">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:tint">@color/photo_tint</item>
+
+        <item name="android:scaleType">centerCrop</item>
+        <item name="riv_corner_radius">6dp</item>
+    </style>
+
+    <color name="photo_tint">#7F101010</color>
 </resources>

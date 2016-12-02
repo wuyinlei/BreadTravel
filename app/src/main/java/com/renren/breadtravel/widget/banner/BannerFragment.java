@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.makeramen.RoundedImageView;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseLeftFragment;
 
@@ -32,7 +33,7 @@ public class BannerFragment extends Fragment {
 
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_banner, container, false);
-        ImageView iv_banner = (ImageView) view.findViewById(R.id.img_banner);
+        RoundedImageView iv_banner = (RoundedImageView) view.findViewById(R.id.photo);
         //iv_banner.setImageResource(imgRes);
         Glide.with(getActivity())
                 .load(imgRes)

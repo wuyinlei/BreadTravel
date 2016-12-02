@@ -46,7 +46,7 @@ public class HotInnerCity {
     private String name_zh;
     private String name_en;
     private int type;
-    private int id;
+    private String id;
     private boolean has_route_maps;
     private String icon;
 
@@ -159,11 +159,11 @@ public class HotInnerCity {
         this.type = type;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

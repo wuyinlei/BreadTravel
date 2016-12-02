@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="180dp"
+              android:orientation="vertical"
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_horizontal_margin"
-              tools:context="com.renren.breadtravel.widget.banner.BannerFragment">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         style="@style/Card"
