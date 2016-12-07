@@ -23,7 +23,7 @@
 
     <dimen name="all_title_height">46dp</dimen>
     <dimen name="title_left_image_margin_left">10dp</dimen>
-    <dimen name="title_image_width_and_height">20dp</dimen>
+    <dimen name="title_image_width_and_height">25dp</dimen>
 
 
     <dimen name="navigation_drawer_width">300dp</dimen>

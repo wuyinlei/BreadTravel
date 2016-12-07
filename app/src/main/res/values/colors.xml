@@ -16,5 +16,7 @@
     <color name="color_drawer_title_bg_normal">#B4E4EA</color>
     <color name="myPrimaryDarkColor">#ffcd8221</color>
 
+    <color name="color_scenic_title_bg">#FBF7EC</color>
+
 
 </resources>

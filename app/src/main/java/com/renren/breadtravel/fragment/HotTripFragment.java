@@ -27,10 +27,12 @@ import com.renren.breadtravel.entity.DetailBean;
 import com.renren.breadtravel.entity.HotInnerCity;
 import com.renren.breadtravel.entity.HotOuterCity;
 import com.renren.breadtravel.ui.BannerDetailActivity;
+import com.renren.breadtravel.ui.ScenicDetailActivity;
 import com.renren.breadtravel.widget.banner.BannerPagerAdapter;
 import com.renren.breadtravel.widget.banner.MyPagerListener;
 import com.renren.breadtravel.widget.banner.ViewPagerIndicator;
 import com.renren.breadtravel.widget.recycler.adapter.LRecyclerViewAdapter;
+import com.renren.breadtravel.widget.recycler.interfaces.OnItemClickListener;
 import com.renren.breadtravel.widget.recycler.view.LRecyclerView;
 
 import org.json.JSONArray;
@@ -79,6 +81,12 @@ public class HotTripFragment extends BaseLeftFragment {
         //设置图片(下拉刷新的时候出现的箭头)
         mLRecyclerView.setArrowImageView(R.drawable.ic_pulltorefresh_arrow);
         mLRecyclerView.setAdapter(mLRecyclerViewAdapter);
+        mLRecyclerViewAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivity(new Intent(getActivity(), ScenicDetailActivity.class));
+            }
+        });
         return view;
     }
 
@@ -282,7 +290,7 @@ public class HotTripFragment extends BaseLeftFragment {
             @Override
             public void onClick(View v, int position) {
                 Intent intent  = new Intent(getActivity(), BannerDetailActivity.class);
-                intent.putExtra(Constants.WEB_VIEW_URL,mBannerDatas.get(position).getPlatform());
+                intent.putExtra(Constants.WEB_VIEW_URL,mBannerDatas.get(position).getHtml_url());
                 startActivity(intent);
             }
         });

@@ -11,9 +11,10 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseActivity;
+import com.renren.breadtravel.base.BaseSwipeActivity;
 import com.renren.breadtravel.constant.Constants;
 
-public class BannerDetailActivity extends BaseActivity implements View.OnClickListener {
+public class BannerDetailActivity extends BaseSwipeActivity implements View.OnClickListener {
 
     private ImageView mImgBack, mImgLiked, mImgShare;
     private TextView mTvTitle;
@@ -31,6 +32,7 @@ public class BannerDetailActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void initListener() {
+        mImgBack.setImageResource(R.drawable.btn_selector_bg);
         mImgBack.setOnClickListener(this);
         mImgShare.setOnClickListener(this);
         mImgLiked.setOnClickListener(this);

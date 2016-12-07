@@ -23,6 +23,7 @@
 
 
     <FrameLayout
+        android:visibility="gone"
         android:id="@+id/framelayout_notification"
         android:layout_width="match_parent"
         android:layout_height="50dp"
