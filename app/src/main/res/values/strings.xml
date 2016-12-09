@@ -28,7 +28,7 @@
 
     <string name="drawer_open">打开</string>
     <string name="drawer_close">关闭</string>
-    <string name="login">请登录</string>
+    <string name="please_login">请登录</string>
 
 
     <string name="hot_trip">热门游记</string>
@@ -43,6 +43,17 @@
     <string name="tip">友情提示</string>
     <string name="day">天</string>
     <string name="view_count">次游览</string>
+
+
+    <string name="login_success">login success</string>
+    <string name="login">登录</string>
+    <string name="Username">请输入用户名</string>
+    <string name="Password">请输入密码</string>
+    <string name="forgot_your_password">忘记密码 ?</string>
+    <string name="go">登录</string>
+    <string name="repeat_password">确认密码</string>
+    <string name="next">NEXT</string>
+    <string name="register">注册</string>
 
 
     <string name="notification_content">热爱编程的小白\r\n\r\n

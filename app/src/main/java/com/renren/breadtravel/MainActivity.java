@@ -56,6 +56,9 @@ public class MainActivity extends BaseActivity implements
         mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_drawer);
         mNavigationDrawerFragment.setUp(R.id.fragment_drawer, mDrawerLayout);
+        if (mNavigationDrawerFragment.isDrawerOpen()){
+            mNavigationDrawerFragment.closeDrawer();
+        }
         mImgNav = (ImageView) findViewById(R.id.img_nav);
         mImgSearch = (ImageView) findViewById(R.id.img_search);
     }

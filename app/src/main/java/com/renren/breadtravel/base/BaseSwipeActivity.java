@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
  * activity基类,用于一般的初始化控件,设置监听,请求数据
  */
 
-public abstract class BaseSwipeActivity extends AppCompatActivity {
+public abstract class BaseSwipeActivity extends BaseSwipeBackActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
