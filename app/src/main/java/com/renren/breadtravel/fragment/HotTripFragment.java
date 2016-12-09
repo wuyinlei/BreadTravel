@@ -7,20 +7,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.adapter.DetailAdapter;
 import com.renren.breadtravel.base.BaseLeftFragment;
 import com.renren.breadtravel.constant.Constants;
+import com.renren.breadtravel.constant.DataStore;
 import com.renren.breadtravel.constant.HttpUrlPath;
 import com.renren.breadtravel.entity.BannerData;
 import com.renren.breadtravel.entity.DetailBean;
@@ -39,21 +38,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
 
-import static android.media.CamcorderProfile.get;
-import static com.renren.breadtravel.R.id.recycler_view;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HotTripFragment extends BaseLeftFragment {
 
+
+    private Bundle saveState;
 
     private LRecyclerView mLRecyclerView;
 
@@ -64,12 +62,10 @@ public class HotTripFragment extends BaseLeftFragment {
     private DetailAdapter mDetailAdapter;
     private LRecyclerViewAdapter mLRecyclerViewAdapter;
 
-
     @Override
     protected void initListener() {
 
     }
-
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -94,14 +90,19 @@ public class HotTripFragment extends BaseLeftFragment {
     public void initData() {
         super.initData();
 
-        OkGo.get(HttpUrlPath.HOME_POPULAR_TRAVEL)
-                .execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(String s, Call call, Response response) {
-                        parseJson(s);
-                    }
-                });
-
+        if (!TextUtils.isEmpty(DataStore.getInstance().getHotListData())) {
+            parseJson(DataStore.getInstance().getHotListData());
+        } else {
+            OkGo.get(HttpUrlPath.HOME_POPULAR_TRAVEL)
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onSuccess(String s, Call call, Response response) {
+                            // parseJson(s);
+                            DataStore.getInstance().saveHotListData(s);
+                            parseJson(s);
+                        }
+                    });
+        }
         // initHeaderView(imgUrls);
     }
 
@@ -142,7 +143,7 @@ public class HotTripFragment extends BaseLeftFragment {
                     imgUrls.add(bannerData.getImage_url());
                 }
 
-               View headView =  initHeaderView(imgUrls);
+                View headView = initHeaderView(imgUrls);
 
                 mLRecyclerViewAdapter.addHeaderView(headView);
                 Log.d("HotTripFragment", "mDetailBeanDatas.size():" + mDetailBeanDatas.size());
@@ -156,7 +157,8 @@ public class HotTripFragment extends BaseLeftFragment {
 
     /**
      * 解析热门外国城市
-     * @param mSearchDataArray  mSearchDataArray
+     *
+     * @param mSearchDataArray mSearchDataArray
      * @throws JSONException
      */
     private void parseOuterCityData(JSONArray mSearchDataArray) throws JSONException {
@@ -189,7 +191,8 @@ public class HotTripFragment extends BaseLeftFragment {
 
     /**
      * 解析国内热门旅游城市信息
-     * @param mSearchDataArray  mSearchDataArray
+     *
+     * @param mSearchDataArray mSearchDataArray
      * @throws JSONException
      */
     private void parseInnerCityData(JSONArray mSearchDataArray) throws JSONException {
@@ -224,6 +227,7 @@ public class HotTripFragment extends BaseLeftFragment {
 
     /**
      * 解析详情数据
+     *
      * @param dataResults dataResults
      * @throws JSONException
      */
@@ -289,8 +293,8 @@ public class HotTripFragment extends BaseLeftFragment {
         mBannerPagerAdapter.setOnClickListener(new BannerPagerAdapter.OnClickListener() {
             @Override
             public void onClick(View v, int position) {
-                Intent intent  = new Intent(getActivity(), BannerDetailActivity.class);
-                intent.putExtra(Constants.WEB_VIEW_URL,mBannerDatas.get(position).getHtml_url());
+                Intent intent = new Intent(getActivity(), BannerDetailActivity.class);
+                intent.putExtra(Constants.WEB_VIEW_URL, mBannerDatas.get(position).getHtml_url());
                 startActivity(intent);
             }
         });

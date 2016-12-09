@@ -11,12 +11,19 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
 import com.renren.breadtravel.base.BaseActivity;
+import com.renren.breadtravel.constant.DataStore;
+import com.renren.breadtravel.constant.HttpUrlPath;
 import com.renren.breadtravel.fragment.BreadOrderFragment;
 import com.renren.breadtravel.fragment.HotTripFragment;
 import com.renren.breadtravel.fragment.NavigationDrawerFragment;
 import com.renren.breadtravel.fragment.SettingFragment;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerCallbacks;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 public class MainActivity extends BaseActivity implements
         NavigationDrawerCallbacks, View.OnClickListener {
@@ -51,19 +58,14 @@ public class MainActivity extends BaseActivity implements
         mNavigationDrawerFragment.setUp(R.id.fragment_drawer, mDrawerLayout);
         mImgNav = (ImageView) findViewById(R.id.img_nav);
         mImgSearch = (ImageView) findViewById(R.id.img_search);
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (mNavigationDrawerFragment.isDrawerOpen()) {
-//            mNavigationDrawerFragment.closeDrawer();
-//
-//        } else {
-//            super.onBackPressed();
-//        }
-//
-//    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

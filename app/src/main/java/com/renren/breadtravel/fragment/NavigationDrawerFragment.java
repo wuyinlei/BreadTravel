@@ -3,6 +3,7 @@ package com.renren.breadtravel.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,8 +14,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.renren.breadtravel.R;
+import com.renren.breadtravel.ui.LoginActivity;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerAdapter;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerCallbacks;
 import com.renren.breadtravel.widget.navagation.NavigationItem;
@@ -25,7 +29,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks {
+public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks, View.OnClickListener {
 
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
 
@@ -53,6 +57,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
     //当前选择的位置
     private int mCurrentSelectedPosition;
+
+    private TextView mTvLogin;
+    private ImageView mIvAvator;
 
     /**
      * 保存sp值
@@ -98,6 +105,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mDrawerList.setAdapter(adapter);
         selectItem(mCurrentSelectedPosition);
 
+        mTvLogin = (TextView) view.findViewById(R.id.tv_login);
+        mIvAvator = (ImageView) view.findViewById(R.id.img_avator);
+        mTvLogin.setOnClickListener(this);
+        mIvAvator.setOnClickListener(this);
 
         return view;
     }
@@ -143,12 +154,6 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         if (!mUserLearnedDrawer && !mFromSaveInstanceState) {
             mDrawerLayout.openDrawer(mFragmentContainerView);
         }
-       /* mDrawerLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mActionBarDrawerToggle.syncState();
-            }
-        });*/
 
         mDrawerLayout.post(()->mActionBarDrawerToggle.syncState());
 
@@ -237,5 +242,16 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         selectItem(position);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.img_avator:
+            case R.id.tv_login:
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

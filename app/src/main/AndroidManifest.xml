@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/BaseAppThemeLight">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/BaseAppThemeLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -21,7 +22,10 @@
             android:name=".ui.BannerDetailActivity"
             android:theme="@style/BaseAppThemeLight">
         </activity>
-        <activity android:name=".ui.ScenicDetailActivity">
+        <activity android:name=".ui.ScenicDetailActivity"
+            >
+        </activity>
+        <activity android:name=".ui.LoginActivity">
         </activity>
     </application>
 
