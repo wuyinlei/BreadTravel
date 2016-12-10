@@ -314,6 +314,7 @@ public class HotTripFragment extends BaseLeftFragment {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
+
                 int currentItem = mViewPager.getCurrentItem();
                 mViewPager.setCurrentItem(currentItem + 1);
                 mHandler.postDelayed(this, 5000);

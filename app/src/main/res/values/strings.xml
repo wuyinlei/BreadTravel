@@ -56,6 +56,19 @@
     <string name="register">注册</string>
 
 
+
+    <string name="register_failed">注册失败</string>
+    <string name="username_has_been_register">该用户名已经注册过,请重新输入用户名</string>
+    <string name="phone_num_is_not_empty">手机号不能为空</string>
+    <string name="phone_num_length_is_error">手机号码长度不对</string>
+    <string name="check_your_phone_format">请检查您的手机号格式是否正确</string>
+    <string name="register_success">注册成功</string>
+
+    <string name="user_name_is_empty">用户名不能为空</string>
+    <string name="pass_word_is_empty">密码不能为空</string>
+    <string name="check_your_password_is_equal">请检查两次输入的密码是否一致?</string>
+
+
     <string name="notification_content">热爱编程的小白\r\n\r\n
 QQ:1069584784(爱好交友)\r\n\r\n
 CSDN地址：http://blog.csdn.net/wuyinlei\r\n\r\n

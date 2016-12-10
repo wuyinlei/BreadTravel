@@ -11,17 +11,28 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
+import com.bumptech.glide.Glide;
 import com.renren.breadtravel.R;
+import com.renren.breadtravel.constant.Constants;
+import com.renren.breadtravel.event.UserEvent;
 import com.renren.breadtravel.ui.LoginActivity;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerAdapter;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerCallbacks;
 import com.renren.breadtravel.widget.navagation.NavigationItem;
+import com.renren.breadtravel.widget.transform.GlideCircleTransform;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,12 +72,16 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private TextView mTvLogin;
     private ImageView mIvAvator;
 
+    private AVUser mAVUser;
+    String userName;
+    String userAvator;
+
     /**
      * 保存sp值
      *
-     * @param context  上下文
+     * @param context      上下文
      * @param settingName  name
-     * @param settingValue  value
+     * @param settingValue value
      */
     public static void savaShareSetting(Context context, String settingName, String settingValue) {
         SharedPreferences prefs = context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
@@ -77,10 +92,11 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
     /**
      * 读取设置的值
-     * @param context  上下文
+     *
+     * @param context      上下文
      * @param settingName  name
-     * @param settingValue  value
-     * @return  保存的值
+     * @param settingValue value
+     * @return 保存的值
      */
     public static String readShareSetting(Context context, String settingName, String settingValue) {
         SharedPreferences prefs = context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
@@ -90,6 +106,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        EventBus.getDefault().register(this);
 
         View view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         mDrawerList = (RecyclerView) view.findViewById(R.id.drawerList);
@@ -111,6 +129,30 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mIvAvator.setOnClickListener(this);
 
         return view;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void UserEventCallback(UserEvent event) {
+        if (event != null) {
+            mAVUser = event.mAVUser;
+            userName = mAVUser.getUsername();
+            updateUI(userName);
+        }
+    }
+
+    /**
+     * 更新UI
+     *
+     * @param userName
+     */
+    private void updateUI(String userName) {
+        if (!TextUtils.isEmpty(userName))
+            mTvLogin.setText(userName);
+        Glide.with(getActivity())
+                .load(Constants.USER_AVATOR_IMG)
+                .asBitmap()
+                .transform(new GlideCircleTransform(getActivity()))
+                .into(mIvAvator);
     }
 
     @Override
@@ -155,7 +197,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
             mDrawerLayout.openDrawer(mFragmentContainerView);
         }
 
-        mDrawerLayout.post(()->mActionBarDrawerToggle.syncState());
+        mDrawerLayout.post(() -> mActionBarDrawerToggle.syncState());
 
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
     }
@@ -244,13 +286,24 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         selectItem(position);
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.img_avator:
             case R.id.tv_login:
-                Intent intent = new Intent(getActivity(),LoginActivity.class);
-                startActivity(intent);
+                if (mTvLogin.getText().equals(getActivity().getResources().getString(R.string.login))) {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "you have been logined", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

@@ -4,10 +4,12 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
@@ -15,10 +17,17 @@ import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.SignUpCallback;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseActivity;
 import com.renren.breadtravel.base.BaseSwipeActivity;
+import com.renren.breadtravel.event.UserEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
@@ -38,6 +47,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void initListener() {
         mFabFinish.setOnClickListener(this);
+        mBtGo.setOnClickListener(this);
     }
 
     @Override
@@ -153,6 +163,64 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             case R.id.fab_finish:
                 animateRevealClose();
                 break;
+
+            case R.id.bt_go:
+                doRegister();
+                break;
         }
+    }
+
+    /**
+     * 执行注册逻辑
+     */
+    private void doRegister() {
+        String username = mEtUsername.getText().toString().trim();
+        String password = mEtPassword.getText().toString().trim();
+        String reportPassword = mEtRepeatpassword.getText().toString().trim();
+        if (TextUtils.isEmpty(username)){
+            Toast.makeText(this, getResources().getString(R.string.user_name_is_empty),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)){
+            Toast.makeText(this, getResources().getString(R.string.pass_word_is_empty),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!password.equals(reportPassword)){
+            Toast.makeText(this, getResources().getString(R.string.check_your_password_is_equal),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        AVUser user = new AVUser();//新创建AVUser对象
+        user.setUsername(username);//设置用户名
+        user.setPassword(password);//设置密码
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(AVException e) {
+                if (e == null){
+                    // 注册成功，把用户对象赋值给当前用户 AVUser.getCurrentUser()
+                    AVUser currentUser = AVUser.getCurrentUser();
+                    UserEvent event = new UserEvent();
+                    event.mAVUser = currentUser;
+                    EventBus.getDefault().post(event);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            RegisterActivity.this.finish();
+                        }
+                    },500);
+
+                } else if (e.getCode() == 202){
+                    Toast.makeText(RegisterActivity.this,
+                            getResources().getString(R.string.username_has_been_register),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
     }
 }

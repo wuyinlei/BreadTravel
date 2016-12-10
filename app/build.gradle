@@ -32,6 +32,17 @@ android {
     }
 }
 
+android {
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions{
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -56,6 +67,10 @@ dependencies {
 
     compile 'com.afollestad.material-dialogs:core:0.9.1.0'
 
+    // LeanCloud 基础包
+    compile ('cn.leancloud.android:avoscloud-sdk:v3.+')
 
+    //传递信息
+    compile 'org.greenrobot:eventbus:3.0.0'
 
 }

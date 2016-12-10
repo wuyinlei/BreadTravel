@@ -5,16 +5,6 @@
     android:background="@drawable/bg_homepage_left_drawer"
     android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/tv_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_avator"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dp_18"
-        android:text="@string/login"
-        android:textColor="@color/color_home_item_bg"/>
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/drawerList"
@@ -40,5 +30,15 @@
         android:layout_marginTop="50dp"
         android:src="@drawable/ic_new_default_avatar"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/login"
+        android:textColor="@color/color_home_item_bg"
+        android:layout_below="@+id/img_avator"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>
