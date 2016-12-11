@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -41,6 +42,8 @@ public class MainActivity extends BaseActivity implements
     private ImageView mImgNav;
     private ImageView mImgSearch;
 
+    private TextView mTvTitle;
+
 
     @Override
     protected int getResultId() {
@@ -65,19 +68,20 @@ public class MainActivity extends BaseActivity implements
         }
         mImgNav = (ImageView) findViewById(R.id.img_nav);
         mImgSearch = (ImageView) findViewById(R.id.img_search);
+        mTvTitle = (TextView) findViewById(R.id.tv_title);
 
 
-        // 测试 SDK 是否正常工作的代码
-        AVObject testObject = new AVObject("TestObject");
-        testObject.put("words","Hello World!");
-        testObject.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(AVException e) {
-                if(e == null){
-                    Log.d("saved","success!");
-                }
-            }
-        });
+//        // 测试 SDK 是否正常工作的代码
+//        AVObject testObject = new AVObject("TestObject");
+//        testObject.put("words","Hello World!");
+//        testObject.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(AVException e) {
+//                if(e == null){
+//                    Log.d("saved","success!");
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -126,16 +130,19 @@ public class MainActivity extends BaseActivity implements
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new HotTripFragment())
                         .commit();
+                mTvTitle.setText(getResources().getString(R.string.app_name));
                 break;
             case 1:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new BreadOrderFragment())
                         .commit();
+                mTvTitle.setText(getResources().getString(R.string.bread_order));
                 break;
             case 2:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new SettingFragment())
                         .commit();
+                mTvTitle.setText(getResources().getString(R.string.setting));
                 break;
         }
     }

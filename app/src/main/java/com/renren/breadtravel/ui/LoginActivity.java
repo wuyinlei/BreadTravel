@@ -21,6 +21,7 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseSwipeActivity;
+import com.renren.breadtravel.event.UserEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -70,7 +71,7 @@ public class LoginActivity extends BaseSwipeActivity implements View.OnClickList
                 } else {
                     startActivity(new Intent(this, RegisterActivity.class));
                 }
-                finish();
+                //finish();
                 break;
             case R.id.bt_go:
                 doLogin();
@@ -111,7 +112,10 @@ public class LoginActivity extends BaseSwipeActivity implements View.OnClickList
             @Override
             public void done(AVUser avUser, AVException e) {
                 if (e == null){
-                    EventBus.getDefault().post(avUser);
+                    AVUser mCurrentUser = avUser;
+                    UserEvent event = new UserEvent();
+                    event.mAVUser = mCurrentUser;
+                    EventBus.getDefault().post(event);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {

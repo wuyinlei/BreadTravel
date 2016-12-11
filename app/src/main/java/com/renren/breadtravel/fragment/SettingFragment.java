@@ -16,13 +16,6 @@ import com.renren.breadtravel.base.BaseLeftFragment;
 public class SettingFragment extends BaseLeftFragment {
 
 
-    public SettingFragment() {
-        // Required empty public constructor
-    }
-
-
-
-
     @Override
     protected void initListener() {
 

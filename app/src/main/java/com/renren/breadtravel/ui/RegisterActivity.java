@@ -25,6 +25,7 @@ import com.avos.avoscloud.SignUpCallback;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseActivity;
 import com.renren.breadtravel.base.BaseSwipeActivity;
+import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.event.UserEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -202,9 +203,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 if (e == null){
                     // 注册成功，把用户对象赋值给当前用户 AVUser.getCurrentUser()
                     AVUser currentUser = AVUser.getCurrentUser();
-                    UserEvent event = new UserEvent();
-                    event.mAVUser = currentUser;
-                    EventBus.getDefault().post(event);
+                    //为用户提供一个默认的图片地址
+                    currentUser.put(Constants.USER_AVATOR_KEY, Constants.USER_AVATOR_IMG);
+                    currentUser.saveInBackground();
+                    //UserEvent event = new UserEvent();
+                 //   event.mAVUser = currentUser;
+                   // EventBus.getDefault().post(event);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {

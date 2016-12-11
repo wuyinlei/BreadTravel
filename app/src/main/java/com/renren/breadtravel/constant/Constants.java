@@ -12,4 +12,5 @@ public class Constants {
 
     public static final String USER_AVATOR_IMG = "http://q.qlogo.cn/qqapp/1105704769/4122845A0B6D5118FA26A2A91FBB0081/100";
 
+    public static final String USER_AVATOR_KEY = "user_avator_key";
 }

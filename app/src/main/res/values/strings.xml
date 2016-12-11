@@ -56,7 +56,6 @@
     <string name="register">注册</string>
 
 
-
     <string name="register_failed">注册失败</string>
     <string name="username_has_been_register">该用户名已经注册过,请重新输入用户名</string>
     <string name="phone_num_is_not_empty">手机号不能为空</string>

@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.renren.breadtravel.R;
 import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.event.UserEvent;
 import com.renren.breadtravel.ui.LoginActivity;
+import com.renren.breadtravel.ui.UserDetailActivity;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerAdapter;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerCallbacks;
 import com.renren.breadtravel.widget.navagation.NavigationItem;
@@ -38,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 左侧菜单栏,用于选择选项记录,并且在主界面更新所选择的Fragment
  */
 public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks, View.OnClickListener {
 
@@ -75,6 +77,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private AVUser mAVUser;
     String userName;
     String userAvator;
+    private String mImage;
 
     /**
      * 保存sp值
@@ -128,6 +131,17 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mTvLogin.setOnClickListener(this);
         mIvAvator.setOnClickListener(this);
 
+        mAVUser = AVUser.getCurrentUser();
+       // Log.d("NavigationDrawerFragmen", "mAVUser:" + mAVUser);
+        if (mAVUser != null){
+            mTvLogin.setText(mAVUser.getUsername());
+            Glide.with(getActivity())
+                    .load(mAVUser.get(Constants.USER_AVATOR_KEY))
+                    .asBitmap()
+                    .transform(new GlideCircleTransform(getActivity()))
+                    .into(mIvAvator);
+        }
+
         return view;
     }
 
@@ -136,18 +150,39 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         if (event != null) {
             mAVUser = event.mAVUser;
             userName = mAVUser.getUsername();
-            updateUI(userName);
+            mImage = (String) mAVUser.get(Constants.USER_AVATOR_KEY);
+            if (mImage == null)
+                updateUI(userName);
+            else
+                updateUI(userName, mImage);
         }
     }
 
     /**
      * 更新UI
      *
-     * @param userName
+     * @param userName 用户名
+     * @param image    用户名图片地址
+     */
+    private void updateUI(String userName, String image) {
+        if (!TextUtils.isEmpty(userName))
+            mTvLogin.setText(userName);
+        Glide.with(getActivity())
+                .load(image)
+                .asBitmap()
+                .transform(new GlideCircleTransform(getActivity()))
+                .into(mIvAvator);
+    }
+
+    /**
+     * 更新UI
+     *
+     * @param userName 用户名
      */
     private void updateUI(String userName) {
         if (!TextUtils.isEmpty(userName))
             mTvLogin.setText(userName);
+        mAVUser.put(Constants.USER_AVATOR_KEY,Constants.USER_AVATOR_IMG);
         Glide.with(getActivity())
                 .load(Constants.USER_AVATOR_IMG)
                 .asBitmap()
@@ -298,11 +333,16 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         switch (view.getId()) {
             case R.id.img_avator:
             case R.id.tv_login:
-                if (mTvLogin.getText().equals(getActivity().getResources().getString(R.string.login))) {
+                if (mTvLogin.getText().equals(
+                        getActivity()
+                                .getResources()
+                                .getString(R.string.login))) {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getActivity(), "you have been logined", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), UserDetailActivity.class);
+                    startActivity(intent);
+                    //Toast.makeText(getActivity(), "you have been logined", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
