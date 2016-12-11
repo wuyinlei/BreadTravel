@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity implements
         mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_drawer);
         mNavigationDrawerFragment.setUp(R.id.fragment_drawer, mDrawerLayout);
-        if (mNavigationDrawerFragment.isDrawerOpen()){
+        if (mNavigationDrawerFragment.isDrawerOpen()) {
             mNavigationDrawerFragment.closeDrawer();
         }
         mImgNav = (ImageView) findViewById(R.id.img_nav);
@@ -93,8 +93,8 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
-            if(!mNavigationDrawerFragment.isDrawerOpen()) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (!mNavigationDrawerFragment.isDrawerOpen()) {
                 //双击退出逻辑
                 new MaterialDialog.Builder(MainActivity.this)
                         .title(getResources().getString(R.string.tip))
@@ -125,12 +125,13 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        switch (position){
+        switch (position) {
             case 0:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new HotTripFragment())
                         .commit();
-                mTvTitle.setText(getResources().getString(R.string.app_name));
+                if (mTvTitle != null)
+                    mTvTitle.setText(getResources().getString(R.string.app_name));
                 break;
             case 1:
                 fragmentManager.beginTransaction()

@@ -73,4 +73,9 @@ QQ:1069584784(爱好交友)\r\n\r\n
 CSDN地址：http://blog.csdn.net/wuyinlei\r\n\r\n
 GitHub地址：https://github.com/wuyinlei\r\n\r\n
 欢迎访问和Fork</string>
+    <string name="current_cache">当前缓存:%</string>
+    <string name="setting_gesture_state_off">关闭</string>
+    <string name="clear_tip">提示</string>
+    <string name="clear_success">清理成功</string>
+    <string name="is_already_the_latest_version">已经是最新版本了,无需进行更新</string>
 </resources>

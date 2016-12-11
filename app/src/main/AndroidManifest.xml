@@ -41,6 +41,8 @@
         </activity>
         <activity android:name=".ui.UserDetailActivity">
         </activity>
+
+        <activity android:name=".ui.WebActivity"/>
     </application>
 
 </manifest>

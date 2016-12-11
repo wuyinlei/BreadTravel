@@ -135,8 +135,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
        // Log.d("NavigationDrawerFragmen", "mAVUser:" + mAVUser);
         if (mAVUser != null){
             mTvLogin.setText(mAVUser.getUsername());
+            if (mAVUser.get(Constants.USER_AVATOR_KEY) !=null){
+                mImage = (String) mAVUser.get(Constants.USER_AVATOR_KEY);
+            } else {
+                mImage = Constants.USER_AVATOR_IMG;
+            }
             Glide.with(getActivity())
-                    .load(mAVUser.get(Constants.USER_AVATOR_KEY))
+                    .load(mImage)
                     .asBitmap()
                     .transform(new GlideCircleTransform(getActivity()))
                     .into(mIvAvator);

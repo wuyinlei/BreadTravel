@@ -2,6 +2,7 @@ package com.renren.breadtravel.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 /**
  * activity基类,用于一般的初始化控件,设置监听,请求数据
@@ -32,6 +33,13 @@ public abstract class BaseSwipeActivity extends BaseSwipeBackActivity {
      */
     public void initData() {
 
+    }
+
+    /** 初始化 Toolbar */
+    public void initToolBar(Toolbar toolbar, boolean homeAsUpEnabled, String title) {
+        toolbar.setTitle(title);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(homeAsUpEnabled);
     }
 
     /**
