@@ -62,15 +62,11 @@ dependencies {
     compile 'com.lzy.net:okserver:1.1.2'
     //下载管理和上传管理扩展，根据需要添加
     compile 'com.google.code.gson:gson:2.8.0'
-
     compile 'com.makeramen:roundedimageview:1.5.0'
-
     compile 'com.afollestad.material-dialogs:core:0.9.1.0'
-
     // LeanCloud 基础包
-    compile ('cn.leancloud.android:avoscloud-sdk:v3.+')
-
+    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
     //传递信息
     compile 'org.greenrobot:eventbus:3.0.0'
-
+    compile files('libs/MobTools-2016.1107.1809.jar')
 }

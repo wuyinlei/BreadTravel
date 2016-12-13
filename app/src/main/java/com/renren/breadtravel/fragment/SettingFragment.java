@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseLeftFragment;
+import com.renren.breadtravel.cn.sharesdk.onekeyshare.OnekeyShare;
+import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.ui.WebActivity;
 import com.renren.breadtravel.utils.CommentUtils;
 import com.renren.breadtravel.utils.DataCleanManager;
@@ -98,7 +100,7 @@ public class SettingFragment extends BaseLeftFragment implements View.OnClickLis
 
                 break;
             case R.id.setting_share: //好友分享
-
+                showShare();
                 break;
             case R.id.version_check: //版本检查
                 new MaterialDialog.Builder(getActivity())
@@ -111,5 +113,31 @@ public class SettingFragment extends BaseLeftFragment implements View.OnClickLis
                 WebActivity.runActivity(getActivity(), "My Github,Welcome star", "https://github.com/wuyinlei");
                 break;
         }
+    }
+
+    private void showShare() {
+            OnekeyShare oks = new OnekeyShare();
+            //关闭sso授权
+            oks.disableSSOWhenAuthorize();
+            // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
+            oks.setTitle(getActivity().getResources().getString(R.string.tip));
+            // titleUrl是标题的网络链接，仅在Linked-in,QQ和QQ空间使用
+            oks.setTitleUrl(Constants.SHARE_URL);
+            // text是分享文本，所有平台都需要这个字段
+            //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
+           // oks.setImageUrl("http://f1.sharesdk.cn/imgs/2014/02/26/owWpLZo_638x960.jpg");
+            // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+            //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+            // url仅在微信（包括好友和朋友圈）中使用
+            oks.setUrl(Constants.SHARE_URL);
+            // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+            oks.setComment(getActivity().getResources().getString(R.string.notification_content));
+            // site是分享此内容的网站名称，仅在QQ空间使用
+            oks.setSite("Welcome To My Home!");
+            // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+            oks.setSiteUrl(Constants.SHARE_URL);
+            // 启动分享GUI
+            oks.show(getActivity());
+
     }
 }

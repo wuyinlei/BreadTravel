@@ -1,9 +1,8 @@
-package com.renren.breadtravel;
+package com.renren.breadtravel.ui;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,22 +12,13 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.SaveCallback;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
+import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseActivity;
-import com.renren.breadtravel.constant.DataStore;
-import com.renren.breadtravel.constant.HttpUrlPath;
 import com.renren.breadtravel.fragment.BreadOrderFragment;
 import com.renren.breadtravel.fragment.HotTripFragment;
 import com.renren.breadtravel.fragment.NavigationDrawerFragment;
 import com.renren.breadtravel.fragment.SettingFragment;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerCallbacks;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class MainActivity extends BaseActivity implements
         NavigationDrawerCallbacks, View.OnClickListener {

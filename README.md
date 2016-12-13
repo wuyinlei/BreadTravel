@@ -1,113 +1,167 @@
-# Ãæ°üÂÃĞĞurl
-###ÈÈÃÅÓÎ¼Çapi
-* ÈÈÃÅÓÎ¼ÇÊ×Ò³api  GETÇëÇó·½Ê½
+# é¢åŒ…æ—…è¡Œç®€ä»‹
+
+æ ‡ç­¾ï¼ˆç©ºæ ¼åˆ†éš”ï¼‰ï¼š é¢åŒ…æ—…è¡Œurl
+
+---
+##MyHeartsäº¤æµç¾¤ï¼ˆåˆšå¼€ï¼Œå“ˆå“ˆï¼‰
+ç¾¤å·ï¼š136471108ï¼ˆè¿›ç¾¤äº¤æµæŠ€æœ¯ï¼Œæœ¬äººæŠ€æœ¯ä¹Ÿä¸æ˜¯å¾ˆå¥½ï¼Œä½†æ˜¯æˆ‘ç›¸ä¿¡ï¼Œå¤§å®¶ä¸€èµ·äº¤æµï¼Œä¼šæœ‰å¾ˆå¥½çš„æå‡ï¼‰
+
+##å…³äºå¦‚ä½•è¿è¡Œé¡¹ç›®  å…³äºå¦‚ä½•è¿è¡Œé¡¹ç›®  å…³äºå¦‚ä½•è¿è¡Œé¡¹ç›®(é‡è¦çš„äº‹æƒ…è¯´ä¸‰é)
+
+**åœ¨æœ¬é¡µçš„æœ€ä¸‹é¢æœ‰äº†è¯¦ç»†çš„è§£ç­”ã€‚**
+###ç•Œé¢å±•ç¤ºï¼š
+#####ä¸»ç•Œé¢
+![](http://ww4.sinaimg.cn/large/006jcGvzgw1fap660nyryj30u01hch45.jpg)
+#####å·¦ä¾§ä¾§è¾¹æ 
+![](http://ww1.sinaimg.cn/large/006jcGvzgw1fap66hxnnlj30u01hcn2q.jpg)
+#####è½®æ’­è¯¦æƒ…
+![](http://ww1.sinaimg.cn/large/006jcGvzgw1fap6729cydj30u01hctpr.jpg)
+#####è®¾ç½®ç•Œé¢
+![](http://ww1.sinaimg.cn/large/006jcGvzgw1fap66qdovuj30u01hcwh1.jpg)
+#####æ³¨å†Œç™»å½•
+![](http://ww2.sinaimg.cn/large/006jcGvzgw1fap679inw6j30u01hcacw.jpg)
+![](http://ww4.sinaimg.cn/large/006jcGvzgw1fap67fys8oj30u01hc0vv.jpg)
+#æœ¬appæ‰€ç”¨URL(æŠ“å–è·å¾—ï¼Œä¸å¾—ç”¨äºå•†ä¸šç”¨é€”)
+###çƒ­é—¨æ¸¸è®°api
+* çƒ­é—¨æ¸¸è®°é¦–é¡µapi  GETè¯·æ±‚æ–¹å¼
 ```
 http://api.breadtrip.com/v2/index/
 ```
-* ÈÈÃÅÓÎ¼Çitemµã»÷½øÈëÏêÇé½çÃæ  2387246443 Õâ¸öÊÇid ÔÚÉÏÃæµÄÇëÇóÊı¾İÖĞ¿ÉÒÔÕÒµ½£¨GET·½Ê½ÇëÇó£©
+* çƒ­é—¨æ¸¸è®°itemç‚¹å‡»è¿›å…¥è¯¦æƒ…ç•Œé¢  2387246443 è¿™ä¸ªæ˜¯id åœ¨ä¸Šé¢çš„è¯·æ±‚æ•°æ®ä¸­å¯ä»¥æ‰¾åˆ°ï¼ˆGETæ–¹å¼è¯·æ±‚ï¼‰
 ```
 http://api.breadtrip.com/trips/2387246443/waypoints/
 ```
 
-###Ãæ°ü¶©ÖÆ
-* ÈÈÃÅ³ÇÊĞ()
+###é¢åŒ…è®¢åˆ¶
+* çƒ­é—¨åŸå¸‚()
 ```
 http://api.breadtrip.com/product/search/hot/
 ```
 
-* È«²¿·ÖÀàÊı¾İapi  ²ÎÊıstart   ¿ªÊ¼Î»ÖÃ   countÒ»´Î¶àÉÙÊı¾İ  country¹ú¼Ò´úÂë(È«²¿Õâ¸ö±ãÇ©ÊÇ0)
+* å…¨éƒ¨åˆ†ç±»æ•°æ®api  å‚æ•°start   å¼€å§‹ä½ç½®   countä¸€æ¬¡å¤šå°‘æ•°æ®  countryå›½å®¶ä»£ç (å…¨éƒ¨è¿™ä¸ªä¾¿ç­¾æ˜¯0)
 ```
 http://web.breadtrip.com/product/topics/more/?start=0&count=10&country=0
 ```
-* »¹ºÃ»úÖÆµÄ·¢ÏÖÁË£¬Ô­±¾Ïë×ÅÓ¦¸Ã»áÓĞ¸ö½Ó¿ÚÇëÇó»ØÀ´itemÊı¾İ£¬µ«ÊÇÕÒ±éÁËÒ²Ã»ÓĞ£¬¹ş¹ş£¬Ô­À´ÊÇÍøÒ³£¬£¬£¬js½»»¥¡£ country  ¶ÔÓ¦×ÅÏÂÃæµÄ data-id
+* è¿˜å¥½æœºåˆ¶çš„å‘ç°äº†ï¼ŒåŸæœ¬æƒ³ç€åº”è¯¥ä¼šæœ‰ä¸ªæ¥å£è¯·æ±‚å›æ¥itemæ•°æ®ï¼Œä½†æ˜¯æ‰¾éäº†ä¹Ÿæ²¡æœ‰ï¼Œå“ˆå“ˆï¼ŒåŸæ¥æ˜¯ç½‘é¡µï¼Œï¼Œï¼Œjsäº¤äº’ã€‚ country  å¯¹åº”ç€ä¸‹é¢çš„ data-id
 ```
  <p>
-            <a class="cur" data-id="0" href="###">È«²¿</a>
+            <a class="cur" data-id="0" href="###">å…¨éƒ¨</a>
             
-            <a href="###" data-id="3649">Ì©¹ú</a>
+            <a href="###" data-id="3649">æ³°å›½</a>
             
-            <a href="###" data-id="3808">ÈÕ±¾</a>
+            <a href="###" data-id="3808">æ—¥æœ¬</a>
             
-            <a href="###" data-id="3238">º«¹ú</a>
+            <a href="###" data-id="3238">éŸ©å›½</a>
             
-            <a href="###" data-id="3803">ÃÀ¹ú</a>
+            <a href="###" data-id="3803">ç¾å›½</a>
             
-            <a href="###" data-id="3814">Ïã¸Û</a>
+            <a href="###" data-id="3814">é¦™æ¸¯</a>
             
-            <a href="###" data-id="3660">Ì¨Íå</a>
+            <a href="###" data-id="3660">å°æ¹¾</a>
             
-            <a href="###" data-id="3589">ĞÂ¼ÓÆÂ</a>
+            <a href="###" data-id="3589">æ–°åŠ å¡</a>
             
-            <a href="###" data-id="3821">Ó¡¶ÈÄáÎ÷ÑÇ</a>
+            <a href="###" data-id="3821">å°åº¦å°¼è¥¿äºš</a>
             
-            <a href="###" data-id="3708">Ô½ÄÏ</a>
+            <a href="###" data-id="3708">è¶Šå—</a>
             
-            <a href="###" data-id="3720">Òâ´óÀû</a>
+            <a href="###" data-id="3720">æ„å¤§åˆ©</a>
             
-            <a href="###" data-id="3793">ÖĞ¹ú</a>
+            <a href="###" data-id="3793">ä¸­å›½</a>
             
         </p>
 
 ```
-###ËÑË÷½çÃæ
-*  3/10052/   Õâ¸ö×Ö¶ÎĞèÒªÔÚ¹úÍâÈÈÃÅÄ¿µÄµØÀïÃæÕÒ   "type": 3, "id": 10052,
+###æœç´¢ç•Œé¢
+*  3/10052/   è¿™ä¸ªå­—æ®µéœ€è¦åœ¨å›½å¤–çƒ­é—¨ç›®çš„åœ°é‡Œé¢æ‰¾   "type": 3, "id": 10052,
 ```
 http://api.breadtrip.com/destination/place/3/10052/
 ```
-#####ËÑË÷½øÈëÖ®ºó
-*¡¡²»¿É´í¹ı
+#####æœç´¢è¿›å…¥ä¹‹å
+*ã€€ä¸å¯é”™è¿‡
 
 ```
 http://web.breadtrip.com/mobile/destination/3/10052/intro/
 ```
-* ÂÃÓÎ¾°µã item  £¨·ÖÀàall/mall/sights/hotel/restaurant/experience/£©<br>·Ö±ğ¶ÔÓ¦È«²¿/¹ºÎï/¾°µã/×¡ËŞ/²ÍÌü/ĞİÏĞÓãÀà
+* æ—…æ¸¸æ™¯ç‚¹ item  ï¼ˆåˆ†ç±»all/mall/sights/hotel/restaurant/experience/ï¼‰<br>åˆ†åˆ«å¯¹åº”å…¨éƒ¨/è´­ç‰©/æ™¯ç‚¹/ä½å®¿/é¤å…/ä¼‘é—²é±¼ç±»
 ```
 http://api.breadtrip.com/destination/place/3/10052/pois/all/?start=0&count=20&sort=default&shift=false&latitude=39.959922249613754&longitude=116.45596566529844
 ```
-* itemµã»÷
+* itemç‚¹å‡»
 ```
 http://api.breadtrip.com/destination/place/5/2388521355/
 ```
-* Ö÷Ìâ°ñµ¥(ĞèÒª×¥È¡»òÕßÊÇÏÔÊ¾webview£¬¾ßÌåĞèÒªÊµ¼Ê²Ù×÷)http://web.breadtrip.com/mobile/destination/3/10052/top10_list/(»ñÈ¡ÏÂÃæÄÚÈİ)<br>   <li data-url="http://breadtrip.com/mobile/destination/496/"Õâ¸ö¾ÍÊÇtopµÄµã»÷Ìø×ª  Ò²ÊÇwebview»òÕßjsoup×¥È¡Ò»ÏÂ
+* ä¸»é¢˜æ¦œå•(éœ€è¦æŠ“å–æˆ–è€…æ˜¯æ˜¾ç¤ºwebviewï¼Œå…·ä½“éœ€è¦å®é™…æ“ä½œ)http://web.breadtrip.com/mobile/destination/3/10052/top10_list/(è·å–ä¸‹é¢å†…å®¹)<br>   <li data-url="http://breadtrip.com/mobile/destination/496/"è¿™ä¸ªå°±æ˜¯topçš„ç‚¹å‡»è·³è½¬  ä¹Ÿæ˜¯webviewæˆ–è€…jsoupæŠ“å–ä¸€ä¸‹
 ```
   <ul class="dest-list">
             <li data-url="http://breadtrip.com/mobile/destination/495/" style="background-image: url(http://photos.breadtrip.com/photo_2014_10_31_df0632f2c47ccbc78713f2d95181df30.jpg?imageView/2/w/640/q/85);">
-                <div class="title">¾°µãTOP5</div>
+                <div class="title">æ™¯ç‚¹TOP5</div>
                 <div class="bg"></div>
             </li>
             <li data-url="http://breadtrip.com/mobile/destination/496/" style="background-image: url(http://photos.breadtrip.com/photo_2014_03_23_ec14356642b72d6165d97343edef1fc1.jpg?imageView/2/w/640/q/85);">
-                <div class="title">²ÍÒûTOP5</div>
+                <div class="title">é¤é¥®TOP5</div>
                 <div class="bg"></div>
             </li>
             <li data-url="http://breadtrip.com/mobile/destination/497/" style="background-image: url(http://photos.breadtrip.com/photo_2014_04_02_8b4717c8a1e770255eaf5e0d86a96fe9.jpg?imageView/2/w/960/q/85);">
-                <div class="title">×¡ËŞTOP5</div>
+                <div class="title">ä½å®¿TOP5</div>
                 <div class="bg"></div>
             </li>
         </ul>
 ```
-* http://web.breadtrip.com/mobile/destination/495/£¨top  itemµã»÷Ö®ºó£©<br>ÕâÀïÃæµÄdata-idºÍdata-type ÊÇÎÒÃÇĞèÒªµÄ£¬ÓÃÓÚÆ´½ÓÌø×ªµ½¾ßÌå¾°µã<br>background-image£ºurlÊÇ×÷ÎªÏÔÊ¾±³¾°µÄÍ¼Æ¬
+* http://web.breadtrip.com/mobile/destination/495/ï¼ˆtop  itemç‚¹å‡»ä¹‹åï¼‰<br>è¿™é‡Œé¢çš„data-idå’Œdata-type æ˜¯æˆ‘ä»¬éœ€è¦çš„ï¼Œç”¨äºæ‹¼æ¥è·³è½¬åˆ°å…·ä½“æ™¯ç‚¹<br>background-imageï¼šurlæ˜¯ä½œä¸ºæ˜¾ç¤ºèƒŒæ™¯çš„å›¾ç‰‡
 ```
- <li data-name="ÄÎÁ¼¹«Ô°" data-id="2388363531" data-type="5" style="background-image: url(http://photos.breadtrip.com/covers_2015_10_22_d4e479f2e7aea0079c50d1e761cba0d9.jpg?imageView/2/w/960/q/85);">
+ <li data-name="å¥ˆè‰¯å…¬å›­" data-id="2388363531" data-type="5" style="background-image: url(http://photos.breadtrip.com/covers_2015_10_22_d4e479f2e7aea0079c50d1e761cba0d9.jpg?imageView/2/w/960/q/85);">
             <div>
-                <h3>ÄÎÁ¼¹«Ô°</h3>
-                <p>ÄÎÁ¼¹«Ô°ÄÚ¼¯ÖĞÁËÄÎÁ¼´ó²¿·ÖµÄÃûÊ¤¹Å¼££¬Èô²İÉ½¡¢¶«´óËÂ¡¢´ºÈÕ´óÉç¡¢¹úÁ¢²©Îï¹İµÈ¶¼ÔÚÕâÀï£¬ÊÇÈÕ±¾ÏÖ´ú¹«Ô°µÄÏÈÇıÖ®Ò»¡£Ô°ÄÚÓĞĞí¶àæÒÏ·µÄÂ¹Èº£¬ÕâĞ©Â¹±»Ö¸¶¨Îª¹ú¼ÒµÄ×ÔÈ»±£»¤¶¯Îï¡£Ò»ÄêËÄ¼¾ÎŞÂÛºÎÊ±£¬ÕâÀï¶¼ÓĞÎüÒıÈËµÄ¾°¹Û¡£</p>
+                <h3>å¥ˆè‰¯å…¬å›­</h3>
+                <p>å¥ˆè‰¯å…¬å›­å†…é›†ä¸­äº†å¥ˆè‰¯å¤§éƒ¨åˆ†çš„åèƒœå¤è¿¹ï¼Œè‹¥è‰å±±ã€ä¸œå¤§å¯ºã€æ˜¥æ—¥å¤§ç¤¾ã€å›½ç«‹åšç‰©é¦†ç­‰éƒ½åœ¨è¿™é‡Œï¼Œæ˜¯æ—¥æœ¬ç°ä»£å…¬å›­çš„å…ˆé©±ä¹‹ä¸€ã€‚å›­å†…æœ‰è®¸å¤šå¬‰æˆçš„é¹¿ç¾¤ï¼Œè¿™äº›é¹¿è¢«æŒ‡å®šä¸ºå›½å®¶çš„è‡ªç„¶ä¿æŠ¤åŠ¨ç‰©ã€‚ä¸€å¹´å››å­£æ— è®ºä½•æ—¶ï¼Œè¿™é‡Œéƒ½æœ‰å¸å¼•äººçš„æ™¯è§‚ã€‚</p>
             </div>
             <i>1</i>
         </li>
 
 ```
-* ¾«²ÊÔ­´´ £¨×Ô¼ºÈ¥×ö·ÖÒ³  µ±ÏÂitemµã»÷È¥µÄurl <br>     http://api.breadtrip.com/trips/2387869041/waypoints/£©
+* ç²¾å½©åŸåˆ› ï¼ˆè‡ªå·±å»åšåˆ†é¡µ  å½“ä¸‹itemç‚¹å‡»å»çš„url <br>     http://api.breadtrip.com/trips/2387869041/waypoints/ï¼‰
 ```
 http://api.breadtrip.com/v2/destination/place/3/10052/trips/?start=0&count=20
 ```
-* ÊµÓÃĞëÖª
+* å®ç”¨é¡»çŸ¥
 ```
 http://web.breadtrip.com/mobile/destination/3/10052/overview/
 ```
 
 
 
-###ËÑË÷Õâ¸öurl£¬keyÖµ±»¼ÓÃÜÁË£¬Õâ¸öÓ¦¸ÃÊµÏÖ²»ÁË(»òÕßÆÆ½âÁË¿ÉÒÔ)£¨Äã°¢Âè£¬£¬ÊÔÁËÒ»ÏÂ£¬Ö±½Ó´«ÈëµØÃûÒ²ĞĞ¡£¡£¡£¡££©
+###æœç´¢è¿™ä¸ªurlï¼Œkeyå€¼è¢«åŠ å¯†äº†ï¼Œè¿™ä¸ªåº”è¯¥å®ç°ä¸äº†(æˆ–è€…ç ´è§£äº†å¯ä»¥)ï¼ˆä½ é˜¿å¦ˆï¼Œï¼Œè¯•äº†ä¸€ä¸‹ï¼Œç›´æ¥ä¼ å…¥åœ°åä¹Ÿè¡Œã€‚ã€‚ã€‚ã€‚ï¼‰
 ```
 http://api.breadtrip.com/v2/search/?key=%E5%8C%97%E4%BA%AC&start=0&count=20&data_type=
 ```
+
+
+###å¦‚ä½•å¯¼å…¥åˆ°è‡ªå·±æœ¬åœ°AndroidStudio
+####æ–¹æ³•ä¸€ï¼š
+* æ‰“å¼€as(Android Studio)-->æœ€ä¸Šæ–¹èœå•é€‰æ‹©VCS-->Checkout from Version Control --> Github(å¯èƒ½ä¼šè®©ä½ è¾“å…¥ä½ çš„githubå¯†ç )
+* ç„¶åè¾“å…¥è¿™ä¸ªç½‘å€https://github.com/wuyinlei/BreadTravelï¼Œç‚¹å‡»ç¡®å®šå°±è¡Œã€‚
+* å½“ç„¶è¿™ä¸ªéœ€è¦ä½ å·²ç»å®‰è£…é…ç½®å¥½äº†GITï¼ˆå¦‚æœè¿˜ä¸çŸ¥é“æ€ä¹ˆé…ç½®ï¼Œå¯ä»¥ç™¾åº¦ï¼Œå¦‚æœæ‰¾ä¸åˆ°gitä¸‹è½½ï¼Œè¯·åŠ ç¾¤ï¼š136471108ï¼‰
+####æ–¹æ³•äºŒï¼š
+*ã€€ç¬¬ä¸€æ­¥ï¼šä¸‹è½½æ­¤é¡¹ç›®çš„zipåŒ…åˆ°æœ¬åœ°ï¼Œå¹¶è¿›è¡Œè§£å‹
+*ã€€ç¬¬äºŒæ­¥ï¼šè¿›å…¥appç›®å½•(æ­¤æ—¶å¯ä»¥çœ‹åˆ°srcå’Œå…¶ä»–æ–‡ä»¶å¤¹)ï¼Œå¤åˆ¶è¿™ä¸ªè·¯å¾„åœ°å€ï¼ˆæ¯”å¦‚æˆ‘çš„åœ°å€ï¼šD:\AndroidCode\BreadTravel\appï¼Œ~~è€Œä¸æ˜¯D:\AndroidCode\BreadTravel~~ï¼‰
+*ã€€ç¬¬ä¸‰æ­¥ï¼šæ‰“å¼€ASï¼Œæ–°å»ºä¸€ä¸ªåŠŸèƒ½(Project)ï¼Œç„¶åFile-->New-->Import Module ï¼ŒæŠŠè·¯å¾„å¤åˆ¶è¿›å…¥åˆ°è¾“å…¥æ¡†ï¼Œç‚¹å‡»ç¡®å®šå³å¯ã€‚
+*ã€€æ³¨æ„ï¼šåœ¨å·¥ç¨‹çº§çš„build.gradleæ–‡ä»¶ä¸­ï¼Œè¾“å…¥ä»¥ä¸‹ä»£ç (è¦ä¸ç„¶ç¼–è¯‘ä¸è¿‡)
+```
+allprojects {
+    repositories {
+        jcenter()
+        //è¿™é‡Œæ˜¯ LeanCloud çš„åŒ…ä»“åº“
+        maven {
+            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
+        }
+    }
+}
+```
+* æ³¨æ„ï¼šç”±äºé¡¹ç›®ä¸­ä½¿ç”¨äº†lambdaè¡¨è¾¾å¼ï¼Œç¡®ä¿sdkç‰ˆæœ¬åœ¨24åŠä»¥ä¸Š ###æœ€åæ³¨æ„ å¦‚æœæ˜¯æœ‰äº›ç¬¬ä¸‰æ–¹åº“ï¼Œæ²¡æœ‰æ‹‰å–ä¸‹æ¥ï¼Œå¯¹äºä¸é‡è¦çš„ï¼Œæ’é™¤ç½‘ç»œè¯·æ±‚ã€å›¾ç‰‡åŠ è½½ç­‰ï¼Œå¯ä»¥æŠŠä¸€äº›æ— å…³ç´§è¦çš„å»é™¤ï¼Œç„¶åæœ‰å…³çš„ä»£ç æ³¨é‡Šï¼Œä¹Ÿæ˜¯å¯ä»¥æˆåŠŸçš„ï¼Œæœ€åæ¨èç¿»å¢™çš„(å¯ä»¥ç”¨äºä¸€èˆ¬çš„ç¿»å¢™) [å¯ä»¥ç”¨äºç¿»å¢™ï¼Œç‚¹å‡»è·³è½¬][5]ï¼Œå·²ç»æä¾›äº†å¦‚ä½•ç¿»å¢™ï¼Œå¦‚ä½•å…·ä½“å®ç°ï¼Œçœ‹ä¸‹é‡Œé¢çš„æ³¨é‡Šå³å¯ã€‚ç›¸ä¿¡ä½ æ˜¯å¯ä»¥çœ‹æ‡‚å¹¶ä¸”å»å®ç°çš„ã€‚
+
+
+  [1]: !%5B%5D%28http://ww1.sinaimg.cn/large/006jcGvzgw1fap61leh8uj30u01hch45.jpg%29
+  [2]: !%5B%5D%28http://ww3.sinaimg.cn/large/006jcGvzgw1fap62iv0n5j30u01hcn2q.jpg%29
+  [3]: !%5B%5D%28http://ww4.sinaimg.cn/large/006jcGvzgw1fap62yvoidj30u01hctpr.jpg%29
+  [4]: !%5B%5D%28http://ww4.sinaimg.cn/large/006jcGvzgw1fap63el73uj30u01hcwh1.jpg%29
+  [5]: https://laod.cn/hosts/2016-google-hosts.html
