@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_light"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+ >
+
+    <ImageView
+        android:id="@+id/drag_close_img"
+        android:layout_width="24dp"
+        android:layout_marginTop="@dimen/dp_14"
+        android:layout_marginRight="@dimen/dp_14"
+        android:layout_height="24dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/delete"
+        android:layout_alignParentRight="true"
+
+        />
+    <RelativeLayout
+        android:layout_below="@id/drag_close_img"
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="切换栏目"
+            android:textSize="@dimen/dp_18"
+            />
+
+        <TextView
+            android:id="@+id/drag_finish_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/delete"
+            android:text="完成"
+            android:padding="3dp"
+            android:background="@drawable/text_view_bg_corner"
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:layout_marginRight="@dimen/dp_14"
+            android:textColor="@color/color_home_title_bg"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/tab"
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="长按排序或删除"
+            />
+        <com.renren.breadtravel.widget.easytagdragview.widget.DragDropGirdView
+            android:id="@+id/tagdrag_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:layout_below="@+id/tv"
+            android:fadingEdge="none"
+            android:layout_marginTop="@dimen/dp_6"
+            android:horizontalSpacing="12dp"
+            android:verticalSpacing="10dp"
+            app:fixed_type="true"
+            android:nestedScrollingEnabled="true"
+            android:numColumns="4"
+            />
+
+        <RelativeLayout
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/tagdrag_view"
+            android:layout_width="match_parent"
+            android:paddingTop="4dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/more_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击添加更多栏目"
+                />
+            <GridView
+                android:id="@+id/add_gridview"
+                android:layout_width="match_parent"
+                android:nestedScrollingEnabled="true"
+                android:numColumns="4"
+                android:layout_marginTop="8dp"
+                android:horizontalSpacing="12dp"
+                android:verticalSpacing="10dp"
+                android:fadingEdge="none"
+                android:layout_below="@+id/more_tv"
+                android:divider="@null"
+                android:layout_height="wrap_content">
+
+            </GridView>
+        </RelativeLayout>
+
+
+        <!-- Host container for the tile drag shadow -->
+        <FrameLayout
+            android:id="@+id/activity_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/tile_drag_shadow_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
+                android:visibility="gone" />
+        </FrameLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

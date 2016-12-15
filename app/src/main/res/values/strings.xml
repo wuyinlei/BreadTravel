@@ -78,4 +78,7 @@ GitHub地址：https://github.com/wuyinlei\r\n\r\n
     <string name="clear_tip">提示</string>
     <string name="clear_success">清理成功</string>
     <string name="is_already_the_latest_version">已经是最新版本了,无需进行更新</string>
+
+    <string name="edit">编辑</string>
+    <string name="finish">完成</string>
 </resources>

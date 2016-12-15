@@ -36,4 +36,9 @@
     <attr format="color|reference" name="widgetBackgroundDark"/>
     <attr format="color|reference" name="widgetBackgroundTitle"/>
 
+    <declare-styleable name="DragDropGirdView">
+        <attr name="fixed_type" format="boolean"/>
+        <attr name="anim_duration" format="integer"/>
+    </declare-styleable>
+
 </resources>

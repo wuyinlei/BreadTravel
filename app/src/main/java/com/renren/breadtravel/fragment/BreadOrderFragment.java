@@ -2,6 +2,7 @@ package com.renren.breadtravel.fragment;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.view.LayoutInflater;
@@ -15,10 +16,14 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.CloudQueryCallback;
+import com.google.gson.Gson;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.adapter.ViewPagerAdapter;
 import com.renren.breadtravel.base.BaseLeftFragment;
+import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.entity.HotCity;
+import com.renren.breadtravel.ui.DragItemActivity;
+import com.renren.breadtravel.utils.PreferencesUtils;
 import com.renren.breadtravel.widget.CustomViewPager;
 
 import java.util.ArrayList;
@@ -47,13 +52,12 @@ public class BreadOrderFragment extends BaseLeftFragment {
     }
 
 
-
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_bread_order, container, false);
         initViews(view);
-       // initFragments();
+        // initFragments();
         return view;
     }
 
@@ -72,6 +76,10 @@ public class BreadOrderFragment extends BaseLeftFragment {
                     mHotCities.add(hotCity);
                 }
 
+                Gson gson = new Gson();
+                String hotCityJson = gson.toJson(mHotCities);
+                PreferencesUtils.putString(getActivity(), Constants.HOT_CITY_ITEM_DRAG, hotCityJson);
+
                 Toast.makeText(getActivity(), "mHotCities.size():" + mHotCities.size(), Toast.LENGTH_SHORT).show();
                 for (HotCity city : mHotCities) {
                     countryName.add(city.ciryName);
@@ -82,7 +90,6 @@ public class BreadOrderFragment extends BaseLeftFragment {
                 initTabs();
             }
         });
-
 
 
     }
@@ -110,15 +117,39 @@ public class BreadOrderFragment extends BaseLeftFragment {
         mIvArrow = (ImageView) view.findViewById(R.id.img_arrow);
     }
 
+    public static final int REQUEST_CODE = 100;
+    public static final int RESULT_CODE = 101;
+    public static final int RESULT_CODE_INDEX = 102;
 
     @Override
     protected void initListener() {
-        mIvArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "点击我饿", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (mHotCities != null) {
+            mIvArrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Toast.makeText(getActivity(), "点击我饿", Toast.LENGTH_SHORT).show();
+                    startActivityForResult(new Intent(getActivity(), DragItemActivity.class), REQUEST_CODE);
+                    //  intent.putExtra(Constants.HOT_CITY_ITEM_DRAG,mHotCities);
+                }
+            });
+        }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_CODE) {
+                // String cityName = PreferencesUtils.getCityName(this);
+                // mSettingCity.setText(cityName);
+                String string = PreferencesUtils.getString(getActivity(), Constants.HOT_CITY_ITEM_DRAG);
+                Toast.makeText(getActivity(), string, Toast.LENGTH_SHORT).show();
+                // TODO: 2016/12/15  在这里可以进行回调  然后对fragment的标题栏重新生成
+            } else if (resultCode == RESULT_CODE_INDEX){
+                int position = PreferencesUtils.getInt(getActivity(),Constants.CURRENT_INDEX,0);
+                mCustomViewPager.setCurrentItem(position);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
 }

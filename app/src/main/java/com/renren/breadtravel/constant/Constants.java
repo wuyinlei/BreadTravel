@@ -17,4 +17,8 @@ public class Constants {
     public static final String SHARE_URL = "https://github.com/wuyinlei/BreadTravel";
 
     public static final String HOT_CITY_INDEX = "hot_city_index";
+
+    public static final String HOT_CITY_ITEM_DRAG = "hot_city_item_drag";
+
+    public static final String CURRENT_INDEX = "current_index";
 }
