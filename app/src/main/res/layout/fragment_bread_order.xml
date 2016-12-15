@@ -1,16 +1,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.renren.breadtravel.fragment.BreadOrderFragment">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.renren.breadtravel.fragment.BreadOrderFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textSize="24dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    <FrameLayout
+        android:background="#30000000"
+        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bread_order"/>
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/img_arrow"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_toRightOf="@+id/tab_layout"
+            android:src="@drawable/arrowicon_details_dynamic"/>
+
+    </FrameLayout>
+
+    <com.renren.breadtravel.widget.CustomViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_layout"/>
+
 
 </RelativeLayout>

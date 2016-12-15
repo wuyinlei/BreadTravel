@@ -1,7 +1,7 @@
 package com.renren.breadtravel.ui;
 
+import android.app.FragmentManager;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.KeyEvent;
 import android.view.View;
@@ -114,7 +114,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         switch (position) {
             case 0:
                 fragmentManager.beginTransaction()

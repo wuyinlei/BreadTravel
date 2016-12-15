@@ -15,4 +15,6 @@ public class Constants {
     public static final String USER_AVATOR_KEY = "user_avator_key";
 
     public static final String SHARE_URL = "https://github.com/wuyinlei/BreadTravel";
+
+    public static final String HOT_CITY_INDEX = "hot_city_index";
 }
