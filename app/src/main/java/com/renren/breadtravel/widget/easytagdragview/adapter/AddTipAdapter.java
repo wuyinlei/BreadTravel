@@ -11,9 +11,6 @@ import com.renren.breadtravel.widget.easytagdragview.bean.Tip;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/5/27 0027.
- */
 public class AddTipAdapter extends BaseAdapter{
 
     private List<Tip> tips;

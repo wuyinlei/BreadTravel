@@ -2,14 +2,13 @@ package com.renren.breadtravel.ui;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.renren.breadtravel.R;
+import com.renren.breadtravel.base.BaseActivity;
 import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.entity.HotCity;
 import com.renren.breadtravel.fragment.BreadOrderFragment;
@@ -23,43 +22,53 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DragItemActivity extends AppCompatActivity {
+
+public class DragItemActivity extends BaseActivity {
 
     private EasyTipDragView easyTipDragView;
     private List<HotCity> mHotCities = new ArrayList<>();
     private List<String> mTips = new ArrayList<>();
+    private List<HotCity> mLastHotCities = new ArrayList<>();
     private boolean isFirstDrag = false;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drag_item);
+    protected int getResultId() {
+        return R.layout.activity_drag_item;
+    }
 
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    public void initView() {
         String json = PreferencesUtils.getString(this, Constants.HOT_CITY_ITEM_DRAG);
-        Type type = new TypeToken<List<HotCity>>(){}.getType();
-        mHotCities = new Gson().fromJson(json,type);
+        Type type = new TypeToken<List<HotCity>>() {
+        }.getType();
+        mHotCities = new Gson().fromJson(json, type);
+        mLastHotCities = new Gson().fromJson(
+                PreferencesUtils.getString(this, Constants.HOT_CITY_CANCEL_ITEM),
+                new TypeToken<List<HotCity>>() {
+                }.getType()
+        );
+        easyTipDragView = (EasyTipDragView) findViewById(R.id.easy_tip_drag_view);
 
-        easyTipDragView =(EasyTipDragView)findViewById(R.id.easy_tip_drag_view);
-
-        if (mHotCities!=null){
-            for (int i = 0; i < mHotCities.size(); i++) {
-                mTips.add(mHotCities.get(i).ciryName);
-            }
-        }
-        //设置已包含的标签数据
-        easyTipDragView.setDragData(getDragTips(mTips));
-        //设置可以添加的标签数据
-        easyTipDragView.setAddData(null);
+        if (mHotCities != null)
+            //设置已包含的标签数据
+            easyTipDragView.setDragData(getDragTips(mHotCities));
+        if (mLastHotCities != null)
+            easyTipDragView.setAddData(getAddTips(mLastHotCities));
+            //设置可以添加的标签数据
+        else
+            easyTipDragView.setAddData(null);
         //在easyTipDragView处于非编辑模式下点击item的回调（编辑模式下点击item作用为删除item）
         easyTipDragView.setSelectedListener(new TipItemView.OnSelectedListener() {
             @Override
             public void onTileSelected(Tip entity, int position, View view) {
-               // toast(((SimpleTitleTip) entity).getTip());
-             //   Toast.makeText(DragItemActivity.this, ((SimpleTitleTip) entity).getTip(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
-               // intent.putExtra("position",position);
-                PreferencesUtils.putInt(DragItemActivity.this,Constants.CURRENT_INDEX,position);
+                PreferencesUtils.putInt(DragItemActivity.this, Constants.CURRENT_INDEX, position);
                 setResult(BreadOrderFragment.RESULT_CODE_INDEX, intent);
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -73,9 +82,9 @@ public class DragItemActivity extends AppCompatActivity {
         easyTipDragView.setDataResultCallback(new EasyTipDragView.OnDataChangeResultCallback() {
             @Override
             public void onDataChangeResult(ArrayList<Tip> tips) {
-               // Log.i("heheda", tips.toString());
+                // Log.i("heheda", tips.toString());
                 isFirstDrag = true;
-                //Toast.makeText(DragItemActivity.this, tips.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DragItemActivity.this, tips.toString(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -84,16 +93,13 @@ public class DragItemActivity extends AppCompatActivity {
             @Override
             public void onComplete(ArrayList<Tip> tips) {
 
-                if (!isFirstDrag){ //因为有些逻辑的原因,这个地方,如果是首次,而且没有进行排序,那么也就代表没有动item
+                if (!isFirstDrag) { //因为有些逻辑的原因,这个地方,如果是首次,而且没有进行排序,那么也就代表没有动item
                     //那么就是原先的数据不变
-
                 } else {
                     String jsonResult = new Gson().toJson(tips);
                     //这个时候数据有变化,拿到的也是变化后的数据
-                    PreferencesUtils.putString(DragItemActivity.this,Constants.HOT_CITY_ITEM_DRAG,jsonResult);
-
+                    PreferencesUtils.putString(DragItemActivity.this, Constants.HOT_CITY_ITEM_DRAG, jsonResult);
                 }
-
                 Intent intent = new Intent();
                 setResult(BreadOrderFragment.RESULT_CODE, intent);
                 new Handler().postDelayed(new Runnable() {
@@ -102,60 +108,59 @@ public class DragItemActivity extends AppCompatActivity {
                         finish();
                     }
                 }, 500);
-                //toast("最终数据：" + tips.toString());
-                //   btn.setVisibility(View.VISIBLE);
-//
-
-
-                Toast.makeText(DragItemActivity.this, "tips:" + tips.toString(), Toast.LENGTH_SHORT).show();
 
             }
         });
-        easyTipDragView.open();
 
+        /**
+         * 按下确定或者其他返回  也就是finish()之后回调，用于返回剩余的数据(没有被添加用于显示的数据)
+         */
+        easyTipDragView.setLastDataCallback(new EasyTipDragView.OnCompleteLastDataCallback() {
+            @Override
+            public void lastDataComplete(List<Tip> tips) {
+                String jsonResult = new Gson().toJson(tips);
+                //保存到本地
+                PreferencesUtils.putString(DragItemActivity.this, Constants.HOT_CITY_CANCEL_ITEM, jsonResult);
+            }
+        });
+
+
+        easyTipDragView.open();
     }
 
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        switch (keyCode){
-//            //点击返回键
-//            case KeyEvent.KEYCODE_BACK:
-//                //判断easyTipDragView是否已经显示出来
-//                if(easyTipDragView.isOpen()){
-//                    if(!easyTipDragView.onKeyBackDown()){
-//                        //  btn.setVisibility(View.VISIBLE);
-//                    }
-//                    return true;
-//                }
-//                //....自己的业务逻辑
-//
-//                break;
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
-//
-
- //   private static String[] dragTips ={"头条","热点","娱乐","体育","财经","科技","段子","轻松一刻","军事","历史","游戏","时尚","NBA"
-   //         ,"漫画","社会","中国足球","手机"};
-  //  private static String[] addTips ={"数码","移动互联","云课堂","家居","旅游","健康","读书","跑步","情感","政务","艺术","博客"};
-    public static List<Tip>  getDragTips(List<String> dragTips){
+    /**
+     * 获取到拖拽数据
+     *
+     * @param dragTips 拖拽数据集合
+     * @return 拖拽数据集合
+     */
+    public static List<Tip> getDragTips(List<HotCity> dragTips) {
         List<Tip> result = new ArrayList<>();
-        for(int i=0;i<dragTips.size();i++){
-            String temp =dragTips.get(i);
+        for (int i = 0; i < dragTips.size(); i++) {
+            String city_id = dragTips.get(i).cityId;
+            String city_name = dragTips.get(i).ciryName;
             SimpleTitleTip tip = new SimpleTitleTip();
-            tip.setTip(temp);
-            tip.setId(i);
+            tip.setId(city_id);
+            tip.setTip(city_name);
             result.add(tip);
         }
         return result;
     }
-    public static List<Tip> getAddTips(List<String> addTips){
+
+    /**
+     * 获取到添加数据集合
+     *
+     * @param addTips 添加数据集合
+     * @return 返回添加数据集合
+     */
+    public static List<Tip> getAddTips(List<HotCity> addTips) {
         List<Tip> result = new ArrayList<>();
-        for(int i=0;i<addTips.size();i++){
-            String temp =addTips.get(i);
+        for (int i = 0; i < addTips.size(); i++) {
+            String city_id = addTips.get(i).cityId;
+            String city_name = addTips.get(i).ciryName;
             SimpleTitleTip tip = new SimpleTitleTip();
-            tip.setTip(temp);
-            tip.setId(i+addTips.size());
+            tip.setTip(city_name);
+            tip.setId(city_id);
             result.add(tip);
         }
         return result;

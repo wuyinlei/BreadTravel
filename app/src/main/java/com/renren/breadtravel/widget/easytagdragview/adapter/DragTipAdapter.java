@@ -13,9 +13,6 @@ import com.renren.breadtravel.widget.easytagdragview.widget.TipItemView;
 import java.util.ArrayList;
 
 
-/**
- * Created by Wenhuaijun on 2016/5/26 0026.
- */
 public class DragTipAdapter extends AbsTipAdapter implements View.OnLongClickListener, TipItemView.OnDeleteClickListener {
     private boolean isEditing = false;
     private static final ClipData EMPTY_CLIP_DATA = ClipData.newPlainText("", "");
@@ -101,6 +98,11 @@ public class DragTipAdapter extends AbsTipAdapter implements View.OnLongClickLis
     public void cancelEditingStatus() {
         isEditing = false;
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void setTilesStartLimit(int startLimit) {
+        super.setTilesStartLimit(startLimit);
     }
 
     private void startEdittingStatus(View v) {

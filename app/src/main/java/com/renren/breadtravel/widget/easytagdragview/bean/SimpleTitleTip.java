@@ -1,24 +1,26 @@
 package com.renren.breadtravel.widget.easytagdragview.bean;
 
+import static com.renren.breadtravel.R.string.tip;
+
 public class SimpleTitleTip implements Tip {
-    private int id;
-    private String tip;
+    private String cityId;
+    private String ciryName;
     @Override
-    public int getId() {
-        return id;
+    public String getId() {
+        return cityId;
     }
 
     @Override
-    public void setId(int id) {
-        this.id = id;
+    public void setId(String id) {
+        this.cityId = id;
     }
 
     public String getTip() {
-        return tip;
+        return ciryName;
     }
 
     public void setTip(String tip) {
-        this.tip = tip;
+        this.ciryName = tip;
     }
 
     @Override

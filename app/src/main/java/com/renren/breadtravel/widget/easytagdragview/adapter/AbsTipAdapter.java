@@ -79,20 +79,20 @@ public abstract class AbsTipAdapter extends BaseAdapter implements
 
     private int mTilesEndLimit = Integer.MAX_VALUE;
 
-    private final HashMap<Long, Integer> mItemIdTopMap = new HashMap<Long, Integer>();
-    private final HashMap<Long, Integer> mItemIdLeftMap = new HashMap<Long, Integer>();
+    private final HashMap<Long, Integer> mItemIdTopMap = new HashMap<>();
+    private final HashMap<Long, Integer> mItemIdLeftMap = new HashMap<>();
 
 
     public static Tip BLANK_ENTRY = new Tip() {
-        private int id;
+        private String id;
 
         @Override
-        public int getId() {
+        public String getId() {
             return id;
         }
 
         @Override
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
     };
@@ -109,15 +109,15 @@ public abstract class AbsTipAdapter extends BaseAdapter implements
                          DragDropListener dragDropListener) {
         mDragDropListener = dragDropListener;
         mContext = context;
-        tips = new ArrayList<Tip>();
+        tips = new ArrayList<>();
         mAnimationDuration = context.getResources().getInteger(R.integer.fade_duration);
     }
 
     /**
      * thumbtack some view,start
-     * @param startLimit
+     * @param startLimit  开始限制
      */
-    protected void setTilesStartLimit(int startLimit){
+    public void setTilesStartLimit(int startLimit){
         mTilesStartLimit = startLimit;
     }
 
@@ -127,7 +127,7 @@ public abstract class AbsTipAdapter extends BaseAdapter implements
 
     /**
      * thumbtack some view,end
-     * @param endLimit
+     * @param endLimit  最后几个限制不拖动
      */
     protected void setTilesEndLimit(int endLimit){
         mTilesEndLimit = endLimit;
@@ -187,7 +187,7 @@ public abstract class AbsTipAdapter extends BaseAdapter implements
      */
     @Override
     public long getItemId(int position) {
-        return tips.get(position).getId();
+        return Long.parseLong(tips.get(position).getId());
     }
 
     @Override
@@ -363,7 +363,7 @@ public abstract class AbsTipAdapter extends BaseAdapter implements
                 final int firstVisiblePosition = mDragDropListener.getDragDropGirdView().getFirstVisiblePosition();
 
                 final AnimatorSet animSet = new AnimatorSet();
-                final ArrayList<Animator> animators = new ArrayList<Animator>();
+                final ArrayList<Animator> animators = new ArrayList<>();
                 for (int i = 0; i < mDragDropListener.getDragDropGirdView().getChildCount(); i++) {
                     final View child = mDragDropListener.getDragDropGirdView().getChildAt(i);
                     int position = firstVisiblePosition + i;

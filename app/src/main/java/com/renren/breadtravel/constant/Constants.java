@@ -20,5 +20,7 @@ public class Constants {
 
     public static final String HOT_CITY_ITEM_DRAG = "hot_city_item_drag";
 
+    public static final String HOT_CITY_CANCEL_ITEM = "hot_city_cancel_item";
+
     public static final String CURRENT_INDEX = "current_index";
 }

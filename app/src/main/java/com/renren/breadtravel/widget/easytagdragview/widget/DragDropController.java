@@ -15,7 +15,7 @@ import java.util.List;
 public class DragDropController {
 
     private final List<OnDragDropListener> mOnDragDropListeners =
-            new ArrayList<OnDragDropListener>();
+            new ArrayList<>();
     private final DragItemContainer mDragItemContainer;
     private final int[] mLocationOnScreen = new int[2];
 

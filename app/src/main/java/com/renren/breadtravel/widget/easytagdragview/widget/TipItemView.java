@@ -18,7 +18,6 @@ package com.renren.breadtravel.widget.easytagdragview.widget;
 import android.content.ClipData;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -30,9 +29,6 @@ import com.renren.breadtravel.widget.easytagdragview.bean.SimpleTitleTip;
 import com.renren.breadtravel.widget.easytagdragview.bean.Tip;
 
 
-/**
- * A TileView displays a picture and name
- */
 public class TipItemView extends RelativeLayout {
     private final static String TAG = TipItemView.class.getSimpleName();
     private static final ClipData EMPTY_CLIP_DATA = ClipData.newPlainText("", "");
