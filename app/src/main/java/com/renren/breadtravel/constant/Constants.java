@@ -18,6 +18,8 @@ public class Constants {
 
     public static final String HOT_CITY_INDEX = "hot_city_index";
 
+    public static final String HOT_CITY_NAME = "hot_city_name";
+
     public static final String HOT_CITY_ITEM_DRAG = "hot_city_item_drag";
 
     public static final String HOT_CITY_CANCEL_ITEM = "hot_city_cancel_item";

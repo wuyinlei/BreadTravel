@@ -72,7 +72,7 @@ public class EasyTipDragView extends RelativeLayout
         }
         close();
         dragTipAdapter = new DragTipAdapter(getContext(), this, this);
-        dragTipAdapter.setTilesStartLimit(1);  //刚开始的那个不允许拖动
+        dragTipAdapter.setTilesStartLimit(0);  //刚开始的那个不允许拖动
         dragTipAdapter.setFirtDragStartCallback(new DragTipAdapter.OnFirstDragStartCallback() {
             @Override
             public void firstDragStartCallback() {

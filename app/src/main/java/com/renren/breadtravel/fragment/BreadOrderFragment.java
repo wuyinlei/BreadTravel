@@ -122,8 +122,9 @@ public class BreadOrderFragment extends BaseLeftFragment {
 
     private void initFragments() {
         //mFragmentList = new ArrayList<>();
-        for (int i = 0; i < mHotCities.size(); i++) {
-            mFragmentList.add(BreadOrderDetailFragment.newInstance(mHotCities.get(i).cityId));
+        int size = mHotCities.size();
+        for (int i = 0; i < size; i++) {
+            mFragmentList.add(BreadOrderDetailFragment.newInstance(mHotCities.get(i).cityId,mHotCities.get(i).ciryName));
         }
 
     }

@@ -34,18 +34,21 @@ public class DragTipAdapter extends AbsTipAdapter implements View.OnLongClickLis
         } else {
             view = (TipItemView) View.inflate(mContext, R.layout.view_tag_item, null);
         }
-        if (isEditing) {
+        if (isEditing && position != 0) {
             view.showDeleteImg();
         } else {
             view.hideDeleteImg();
         }
         //设置点击监听
         view.setItemListener(position, mListener);
-        view.setOnLongClickListener(this);
-        //设置删除监听
-        view.setDeleteClickListener(position, deleteClickListener);
         //绑定数据
-        view.renderData(getItem(position));
+        view.renderData(getItem(position),position);
+        if (position != 0) {  //对于当前位置  不设置长按监听  不参与编辑和排序
+            view.setOnLongClickListener(this);
+            //设置删除监听
+            view.setDeleteClickListener(position, deleteClickListener);
+        }
+
         return view;
     }
 
