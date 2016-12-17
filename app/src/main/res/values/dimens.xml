@@ -26,6 +26,7 @@
     <dimen name="title_left_image_margin_left">10dp</dimen>
     <dimen name="title_image_width_and_height">25dp</dimen>
 
+    <dimen name="bread_item_image_height">180dp</dimen>
 
     <dimen name="navigation_drawer_width">300dp</dimen>
 </resources>
