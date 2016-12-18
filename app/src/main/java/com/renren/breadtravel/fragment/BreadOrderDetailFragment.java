@@ -36,6 +36,7 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
+import static android.R.attr.editorExtras;
 import static android.R.attr.fragment;
 
 
@@ -117,7 +118,8 @@ public class BreadOrderDetailFragment extends BaseFragment {
                                     mProductsBeen = listBean.getProducts();
                                     ProductsBean bean = new ProductsBean();
                                     bean.isLookMore = true;
-                                    mProductsBeen.add(bean);
+                                    bean.setUrl(listBean.getUrl()); //设置点击查看更多界面的调转url
+                                    mProductsBeen.add(mProductsBeen.size(),bean);//在最后一项加入一个假的数据
                                 }
                             }
 
