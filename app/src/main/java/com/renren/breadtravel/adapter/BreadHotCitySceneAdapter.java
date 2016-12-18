@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.entity.BreadData.DataBean.TopicListBean;
-import com.renren.breadtravel.ui.BannerDetailActivity;
+import com.renren.breadtravel.ui.DetailActivity;
 import com.renren.breadtravel.widget.recycler.base.BaseViewHolder;
 import com.renren.breadtravel.widget.recycler.base.SimpleAdapter;
 
@@ -39,7 +39,7 @@ public class BreadHotCitySceneAdapter extends SimpleAdapter<TopicListBean> {
         viewHoder.getImageView(R.id.img_bg).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, BannerDetailActivity.class);
+                Intent intent = new Intent(mContext, DetailActivity.class);
                 intent.putExtra(Constants.WEB_VIEW_URL, item.getUrl());
                 mContext.startActivity(intent);
             }
@@ -90,14 +90,14 @@ public class BreadHotCitySceneAdapter extends SimpleAdapter<TopicListBean> {
                 TextView textView = viewHoder.getTextView(R.id.price_origin);
                 textView.setText(item.getMarket_price());
                 textView.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-//                Intent intent = new Intent(mContext, BannerDetailActivity.class);
+//                Intent intent = new Intent(mContext, DetailActivity.class);
 //                intent.putExtra(Constants.WEB_VIEW_URL, item.getUrl());
 //                mContext.startActivity(intent);
              RelativeLayout reItem = (RelativeLayout) viewHoder.getView(R.id.re_item);
                 reItem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(mContext, BannerDetailActivity.class);
+                        Intent intent = new Intent(mContext, DetailActivity.class);
                intent.putExtra(Constants.WEB_VIEW_URL, item.getUrl());
                 mContext.startActivity(intent);
                     }
@@ -115,7 +115,7 @@ public class BreadHotCitySceneAdapter extends SimpleAdapter<TopicListBean> {
 //                            if (mOnItemClick !=null){
 //                                mOnItemClick.onItemClickListener(view,item);
 //                            }
-                            Intent intent = new Intent(mContext, BannerDetailActivity.class);
+                            Intent intent = new Intent(mContext, DetailActivity.class);
                             intent.putExtra(Constants.WEB_VIEW_URL, url);
                             mContext.startActivity(intent);
                         }

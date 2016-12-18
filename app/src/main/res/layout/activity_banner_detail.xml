@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="com.renren.breadtravel.ui.BannerDetailActivity">
+    tools:context="com.renren.breadtravel.ui.DetailActivity">
 
     <include
         android:id="@+id/title"

@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -26,9 +25,8 @@ import com.renren.breadtravel.entity.BannerData;
 import com.renren.breadtravel.entity.DetailBean;
 import com.renren.breadtravel.entity.HotInnerCity;
 import com.renren.breadtravel.entity.HotOuterCity;
-import com.renren.breadtravel.ui.BannerDetailActivity;
+import com.renren.breadtravel.ui.DetailActivity;
 import com.renren.breadtravel.ui.ScenicDetailActivity;
-import com.renren.breadtravel.view.BannerHeaderView;
 import com.renren.breadtravel.widget.banner.BannerPagerAdapter;
 import com.renren.breadtravel.widget.banner.MyPagerListener;
 import com.renren.breadtravel.widget.banner.ViewPagerIndicator;
@@ -318,7 +316,7 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
         mBannerPagerAdapter.setOnClickListener(new BannerPagerAdapter.OnClickListener() {
             @Override
             public void onClick(View v, int position) {
-                Intent intent = new Intent(getActivity(), BannerDetailActivity.class);
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
                 intent.putExtra(Constants.WEB_VIEW_URL, mBannerDatas.get(position).getHtml_url());
                 startActivity(intent);
             }

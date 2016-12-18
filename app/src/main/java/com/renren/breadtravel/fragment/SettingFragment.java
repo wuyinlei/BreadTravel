@@ -17,6 +17,7 @@ import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.ui.WebActivity;
 import com.renren.breadtravel.utils.CommentUtils;
 import com.renren.breadtravel.utils.DataCleanManager;
+import com.renren.breadtravel.utils.ShareUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -100,7 +101,10 @@ public class SettingFragment extends BaseLeftFragment implements View.OnClickLis
 
                 break;
             case R.id.setting_share: //好友分享
-                showShare();
+                //showShare();
+                ShareUtils.showShare(getActivity(),
+                        getActivity().getResources().getString(R.string.tip),
+                        Constants.SHARE_URL);
                 break;
             case R.id.version_check: //版本检查
                 new MaterialDialog.Builder(getActivity())
