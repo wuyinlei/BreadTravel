@@ -4,13 +4,19 @@
                 android:layout_height="match_parent"
                 tools:context="com.renren.breadtravel.fragment.BreadOrderFragment">
 
+    <include
+        android:id="@+id/title"
+        layout="@layout/activity_home_title_bar"
+        />
         <android.support.design.widget.TabLayout
+            android:layout_below="@+id/title"
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
 
     <FrameLayout
+        android:layout_below="@+id/title"
         android:layout_alignParentRight="true"
         android:layout_width="40dp"
         android:layout_height="50dp">

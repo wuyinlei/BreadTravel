@@ -1,6 +1,7 @@
 package com.renren.breadtravel.fragment;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.avos.avoscloud.AVCloudQueryResult;
 import com.avos.avoscloud.AVException;
@@ -24,6 +26,8 @@ import com.renren.breadtravel.base.BaseLeftFragment;
 import com.renren.breadtravel.constant.Constants;
 import com.renren.breadtravel.entity.HotCity;
 import com.renren.breadtravel.ui.DragItemActivity;
+import com.renren.breadtravel.ui.MainActivity;
+import com.renren.breadtravel.ui.SearchActivity;
 import com.renren.breadtravel.utils.PreferencesUtils;
 import com.renren.breadtravel.widget.CustomViewPager;
 
@@ -31,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BreadOrderFragment extends BaseLeftFragment {
+public class BreadOrderFragment extends BaseLeftFragment implements View.OnClickListener {
 
     private TabLayout mTabLayout;
     private CustomViewPager mCustomViewPager;
@@ -43,7 +47,12 @@ public class BreadOrderFragment extends BaseLeftFragment {
     private ViewPagerAdapter mPagerAdapter;
     private List<String> countryName = new ArrayList<>();
 
+    private ImageView mIvNav,mImgSearch;
+    private TextView mTvTitle;
+
     private ImageView mIvArrow;
+
+    private MainActivity mActivity;
 
 
     public BreadOrderFragment() {
@@ -58,6 +67,12 @@ public class BreadOrderFragment extends BaseLeftFragment {
         initViews(view);
         // initFragments();
         return view;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = (MainActivity) activity;
     }
 
     @Override
@@ -133,6 +148,10 @@ public class BreadOrderFragment extends BaseLeftFragment {
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         mCustomViewPager = (CustomViewPager) view.findViewById(R.id.container);
         mIvArrow = (ImageView) view.findViewById(R.id.img_arrow);
+        mIvNav = (ImageView) view.findViewById(R.id.img_nav);
+        mImgSearch = (ImageView) view.findViewById(R.id.img_search);
+        mTvTitle = (TextView) view.findViewById(R.id.tv_title);
+        mTvTitle.setText(mActivity.getResources().getString(R.string.bread_order));
     }
 
     public static final int REQUEST_CODE = 100;
@@ -151,6 +170,9 @@ public class BreadOrderFragment extends BaseLeftFragment {
                 }
             });
         }
+
+        mIvNav.setOnClickListener(this);
+        mImgSearch.setOnClickListener(this);
     }
 
     @Override
@@ -188,4 +210,20 @@ public class BreadOrderFragment extends BaseLeftFragment {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.img_nav:
+                NavigationDrawerFragment navigationDrawerFragment = mActivity.getNavigationDrawerFragment();
+                if (navigationDrawerFragment != null){
+                    navigationDrawerFragment.openDrawer();
+                }
+                break;
+            case R.id.img_search:
+                Intent intent = new Intent(mActivity, SearchActivity.class);
+                intent.putExtra(Constants.IS_SEARCH_COME_FROM_HOT_TRIP,false);
+                startActivity(intent);
+                break;
+        }
+    }
 }

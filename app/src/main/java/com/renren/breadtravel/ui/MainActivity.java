@@ -14,14 +14,18 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseActivity;
+import com.renren.breadtravel.entity.HotInnerCity;
+import com.renren.breadtravel.entity.HotOuterCity;
 import com.renren.breadtravel.fragment.BreadOrderFragment;
 import com.renren.breadtravel.fragment.HotTripFragment;
 import com.renren.breadtravel.fragment.NavigationDrawerFragment;
 import com.renren.breadtravel.fragment.SettingFragment;
 import com.renren.breadtravel.widget.navagation.NavigationDrawerCallbacks;
 
+import java.util.List;
+
 public class MainActivity extends BaseActivity implements
-        NavigationDrawerCallbacks, View.OnClickListener {
+        NavigationDrawerCallbacks{
 
 
     private DrawerLayout mDrawerLayout;
@@ -34,6 +38,8 @@ public class MainActivity extends BaseActivity implements
 
     private TextView mTvTitle;
 
+    private boolean isHotTripFragment = true;
+
 
     @Override
     protected int getResultId() {
@@ -42,8 +48,9 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     protected void initListener() {
-        mImgNav.setOnClickListener(this);
-        mImgSearch.setOnClickListener(this);
+//        mImgNav.setOnClickListener(this);
+//        mImgSearch.setOnClickListener(this);
+
     }
 
     @Override
@@ -56,9 +63,9 @@ public class MainActivity extends BaseActivity implements
         if (mNavigationDrawerFragment.isDrawerOpen()) {
             mNavigationDrawerFragment.closeDrawer();
         }
-        mImgNav = (ImageView) findViewById(R.id.img_nav);
-        mImgSearch = (ImageView) findViewById(R.id.img_search);
-        mTvTitle = (TextView) findViewById(R.id.tv_title);
+//        mImgNav = (ImageView) findViewById(R.id.img_nav);
+//        mImgSearch = (ImageView) findViewById(R.id.img_search);
+//        mTvTitle = (TextView) findViewById(R.id.tv_title);
 
 
 //        // 测试 SDK 是否正常工作的代码
@@ -80,6 +87,9 @@ public class MainActivity extends BaseActivity implements
 
     }
 
+    public NavigationDrawerFragment getNavigationDrawerFragment() {
+        return mNavigationDrawerFragment;
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -120,33 +130,39 @@ public class MainActivity extends BaseActivity implements
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new HotTripFragment())
                         .commit();
-                if (mTvTitle != null)
-                    mTvTitle.setText(getResources().getString(R.string.app_name));
+                //isHotTripFragment = true;
+                //if (mTvTitle != null)
+               //     mTvTitle.setText(getResources().getString(R.string.app_name));
                 break;
             case 1:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new BreadOrderFragment())
                         .commit();
-                mTvTitle.setText(getResources().getString(R.string.bread_order));
+              //  isHotTripFragment = false;
+               // mTvTitle.setText(getResources().getString(R.string.bread_order));
                 break;
             case 2:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new SettingFragment())
                         .commit();
-                mTvTitle.setText(getResources().getString(R.string.setting));
+               // isHotTripFragment = false;
+              //  mTvTitle.setText(getResources().getString(R.string.setting));
                 break;
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.img_nav:
-                mNavigationDrawerFragment.openDrawer();
-                break;
-            case R.id.img_search:
-                Toast.makeText(this, "clicked search", Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }
+
+
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.img_nav:
+//                mNavigationDrawerFragment.openDrawer();
+//                break;
+//          //  case R.id.img_search:
+//
+//               // Toast.makeText(this, "clicked search", Toast.LENGTH_SHORT).show();
+//           //     break;
+//        }
+//    }
 }

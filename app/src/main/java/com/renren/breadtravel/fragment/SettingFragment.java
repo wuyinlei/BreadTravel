@@ -1,11 +1,13 @@
 package com.renren.breadtravel.fragment;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import com.renren.breadtravel.R;
 import com.renren.breadtravel.base.BaseLeftFragment;
 import com.renren.breadtravel.cn.sharesdk.onekeyshare.OnekeyShare;
 import com.renren.breadtravel.constant.Constants;
+import com.renren.breadtravel.ui.MainActivity;
 import com.renren.breadtravel.ui.WebActivity;
 import com.renren.breadtravel.utils.CommentUtils;
 import com.renren.breadtravel.utils.DataCleanManager;
@@ -41,6 +44,8 @@ public class SettingFragment extends BaseLeftFragment implements View.OnClickLis
     private LinearLayout mSettingByme; //关于作者
     private String mTotalCacheSize;
 
+    private MainActivity mActivity;
+
 
     @Override
     protected void initListener() {
@@ -50,7 +55,11 @@ public class SettingFragment extends BaseLeftFragment implements View.OnClickLis
         mSettingShare.setOnClickListener(this);
         mVersionCheck.setOnClickListener(this);
         mSettingByme.setOnClickListener(this);
+        mIvNav.setOnClickListener(this);
     }
+
+    private ImageView mIvNav,mImgSearch;
+    private TextView mTvTitle;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +88,11 @@ public class SettingFragment extends BaseLeftFragment implements View.OnClickLis
         mVersionCheck = (LinearLayout) view.findViewById(R.id.version_check);
         mCurrentVersionCode = (TextView) view.findViewById(R.id.version_name);
         mSettingByme = (LinearLayout) view.findViewById(R.id.setting_byme);
+
+        mIvNav = (ImageView) view.findViewById(R.id.img_nav);
+        mImgSearch = (ImageView) view.findViewById(R.id.img_search);
+        mTvTitle = (TextView) view.findViewById(R.id.tv_title);
+        mTvTitle.setText(mActivity.getResources().getString(R.string.setting));
 
     }
 
@@ -116,7 +130,22 @@ public class SettingFragment extends BaseLeftFragment implements View.OnClickLis
             case R.id.setting_byme:  //关于作者
                 WebActivity.runActivity(getActivity(), "My Github,Welcome star", "https://github.com/wuyinlei");
                 break;
+
+            case R.id.img_nav:
+                NavigationDrawerFragment navigationDrawerFragment = mActivity.getNavigationDrawerFragment();
+                if (navigationDrawerFragment !=null){
+                    navigationDrawerFragment.openDrawer();
+                }
+                break;
         }
+
+
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = (MainActivity) activity;
     }
 
     private void showShare() {

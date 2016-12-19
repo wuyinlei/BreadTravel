@@ -3,8 +3,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context="com.renren.breadtravel.fragment.HotTripFragment">
+    <include
+        android:id="@+id/title"
+        layout="@layout/activity_home_title_bar"
+        />
 
     <com.renren.breadtravel.widget.recycler.view.LRecyclerView
+       android:layout_below="@+id/title"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

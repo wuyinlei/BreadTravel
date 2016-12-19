@@ -25,4 +25,6 @@ public class Constants {
     public static final String HOT_CITY_CANCEL_ITEM = "hot_city_cancel_item";
 
     public static final String CURRENT_INDEX = "current_index";
+
+    public static final String IS_SEARCH_COME_FROM_HOT_TRIP = "is_search_come_from_hot_trip";
 }

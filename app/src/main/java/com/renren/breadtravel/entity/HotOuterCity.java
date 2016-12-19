@@ -2,11 +2,13 @@ package com.renren.breadtravel.entity;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
+
 /**
  * Created by wuyinlei on 2016/12/2.
  */
 
-public class HotOuterCity {
+public class HotOuterCity implements Serializable{
 
 
     /**
@@ -183,7 +185,7 @@ public class HotOuterCity {
         this.icon = icon;
     }
 
-    public static class LocationBean {
+    public static class LocationBean implements Serializable{
         private double lat;
         private double lng;
 

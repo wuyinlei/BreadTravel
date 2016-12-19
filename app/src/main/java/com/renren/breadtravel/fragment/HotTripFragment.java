@@ -1,6 +1,7 @@
 package com.renren.breadtravel.fragment;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -26,7 +30,9 @@ import com.renren.breadtravel.entity.DetailBean;
 import com.renren.breadtravel.entity.HotInnerCity;
 import com.renren.breadtravel.entity.HotOuterCity;
 import com.renren.breadtravel.ui.DetailActivity;
+import com.renren.breadtravel.ui.MainActivity;
 import com.renren.breadtravel.ui.ScenicDetailActivity;
+import com.renren.breadtravel.ui.SearchActivity;
 import com.renren.breadtravel.widget.banner.BannerPagerAdapter;
 import com.renren.breadtravel.widget.banner.MyPagerListener;
 import com.renren.breadtravel.widget.banner.ViewPagerIndicator;
@@ -42,6 +48,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +59,7 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HotTripFragment extends BaseLeftFragment implements OnRefreshListener, OnLoadMoreListener {
+public class HotTripFragment extends BaseLeftFragment implements OnRefreshListener, OnLoadMoreListener, View.OnClickListener {
 
 
     private Bundle saveState;
@@ -70,9 +77,15 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
 
     private String next_start;
 
+    private ImageView mIvNav,mImgSearch;
+    private TextView mTvTitle;
+
+    private MainActivity mActivity;
+
     @Override
     protected void initListener() {
-
+        mIvNav.setOnClickListener(this);
+        mImgSearch.setOnClickListener(this);
     }
 
     @Override
@@ -97,7 +110,17 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
         mLRecyclerView.setOnLoadMoreListener(this);
 
         mLRecyclerView.setRefreshing(true);
+
+        mIvNav = (ImageView) mView.findViewById(R.id.img_nav);
+        mImgSearch = (ImageView) mView.findViewById(R.id.img_search);
+        mTvTitle = (TextView) mView.findViewById(R.id.tv_title);
         return mView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = (MainActivity) activity;
     }
 
     @Override
@@ -245,6 +268,18 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
             innerCity.setIcon(innerCityResult.getString("icon"));
             mHotInnerCity.add(innerCity);
         }
+
+
+    }
+
+
+
+    public List<HotInnerCity> getHotInnerCity() {
+        return mHotInnerCity;
+    }
+
+    public List<HotOuterCity> getHotOuterCity() {
+        return mHotOuterCity;
     }
 
     /**
@@ -308,8 +343,8 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
     }
 
     private View initHeaderView(List<String> imgUrls) {
-        View headerView = LayoutInflater.from(getActivity())
-                .inflate(R.layout.hot_fragment_banner_layout, (ViewGroup) mView.findViewById(android.R.id.content), false);
+        View headerView = LayoutInflater.from(mActivity)
+                .inflate(R.layout.hot_fragment_banner_layout, null);
         mViewPager = (ViewPager) headerView.findViewById(R.id.view_pager);
         mIndicator = (ViewPagerIndicator) headerView.findViewById(R.id.indicator);
         mBannerPagerAdapter = new BannerPagerAdapter(getChildFragmentManager(), imgUrls);
@@ -450,5 +485,28 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
         mLRecyclerView.refreshComplete();
         RecyclerViewStateUtils
                 .setFooterViewState(mLRecyclerView, LoadingFooter.State.Normal);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.img_nav:
+                NavigationDrawerFragment navigationDrawerFragment = mActivity.getNavigationDrawerFragment();
+                if (navigationDrawerFragment != null){
+                    navigationDrawerFragment.openDrawer();
+                }
+                break;
+            case R.id.img_search:
+                if(mHotInnerCity.size() > 0 && mHotOuterCity.size()>0){
+                    Intent intent = new Intent(mActivity, SearchActivity.class);
+                    intent.putExtra(Constants.IS_SEARCH_COME_FROM_HOT_TRIP,true);
+                    intent.putExtra("hot_out_city", (Serializable) mHotOuterCity);
+                    intent.putExtra("hot_inner_city", (Serializable) mHotInnerCity);
+                    startActivity(intent);
+                    Toast.makeText(mActivity, "I am here", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 }

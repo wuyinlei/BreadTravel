@@ -81,4 +81,11 @@ GitHub地址：https://github.com/wuyinlei\r\n\r\n
 
     <string name="edit">编辑</string>
     <string name="finish">完成</string>
+
+    <string name="is_come_from_hot_trip_tip">搜索目的地、游记、故事集、用户</string>
+    <string name="is_come_from_bread_trip_tip">搜索专题、产品、酒店...</string>
+
+    <string name="hot_trip_inner">国内热门目的地</string>
+    <string name="hot_trip_outer">国外热门目的地</string>
+    <string name="hot_search">热门搜索</string>
 </resources>

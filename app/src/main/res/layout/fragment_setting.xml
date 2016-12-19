@@ -4,6 +4,9 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context="com.renren.breadtravel.fragment.SettingFragment">
+    <include
+        layout="@layout/activity_home_title_bar"
+        />
 
     <LinearLayout
         android:id="@+id/gesture_mge"

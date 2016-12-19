@@ -13,6 +13,8 @@
     <color name="color_home_item_bg">#FBF7ED</color>
 
     <color name="color_home_title_bg">#48B8C7</color>
+    <color name="edit_text_bg">#1198C7</color>
+
     <color name="color_drawer_title_bg_normal">#B4E4EA</color>
     <color name="myPrimaryDarkColor">#ffcd8221</color>
 
@@ -46,4 +48,15 @@
     <color name="font_dark">#1D1E1E</color>
     <color name="font_light">#464e76</color>
     <color name="font_blue">#5178b4</color>
+
+    <color name="title">#242424</color>
+    <color name="grey">#757575</color>
+    <color name="primary">#F44336</color>
+    <color name="primary_dark">#D32F2F</color>
+    <color name="primary_light">#FFCDD2</color>
+    <color name="accent">#03A9F4</color>
+    <color name="primary_text">#2a2a2a</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#F8F8F8</color>
+    <color name="divider">#B6B6B6</color>
 </resources>

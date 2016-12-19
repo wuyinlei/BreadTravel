@@ -32,6 +32,10 @@ http://api.breadtrip.com/v2/index/
 http://api.breadtrip.com/trips/2387246443/waypoints/
 ```
 
+* 某个item(photo)点击评论获取评论详情界面url
+```
+ http://api.breadtrip.com/trips/2387122390/waypoints/2355942363/replies/?count=32767
+```
 ###面包订制
 * 热门城市()
 ```
