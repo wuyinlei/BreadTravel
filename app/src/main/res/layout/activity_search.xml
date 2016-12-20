@@ -25,6 +25,7 @@
             android:layout_toLeftOf="@+id/tv_cancel"
             android:background="@drawable/edit_text_view_bg_corner"
             android:gravity="center|left"
+            android:textSize="@dimen/dp_14"
             android:paddingLeft="@dimen/dp_18"
             android:textColor="@color/white"
             android:textColorHint="@color/white"/>
@@ -66,7 +67,7 @@
                     android:textSize="@dimen/dp_18"
                     android:text="搜索历史"/>
 
-                <com.renren.breadtravel.widget.flowlayout.TagCloudLayout
+                <com.renren.breadtravel.widget.flow.FlowLayout
                     android:id="@+id/flow_layout_one_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,7 +95,7 @@
                     android:layout_marginTop="@dimen/dp_40"
                     android:text="热门搜索"/>
 
-                <com.renren.breadtravel.widget.flowlayout.TagCloudLayout
+                <com.renren.breadtravel.widget.flow.FlowLayout
                     android:id="@+id/flow_layout_two_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,7 +122,7 @@
                     android:layout_marginTop="@dimen/dp_40"
                     android:text="热门搜索"/>
 
-                <com.renren.breadtravel.widget.flowlayout.TagCloudLayout
+                <com.renren.breadtravel.widget.flow.FlowLayout
                     android:id="@+id/flow_layout_three_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -1,6 +1,10 @@
 package com.renren.breadtravel.ui;
 
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,6 +22,7 @@ import com.renren.breadtravel.db.SearchDbHelper;
 import com.renren.breadtravel.entity.HotInnerCity;
 import com.renren.breadtravel.entity.HotOuterCity;
 import com.renren.breadtravel.entity.HotRecomment;
+import com.renren.breadtravel.widget.flow.FlowLayout;
 import com.renren.breadtravel.widget.flowlayout.TagBaseAdapter;
 import com.renren.breadtravel.widget.flowlayout.TagCloudLayout;
 
@@ -43,12 +48,12 @@ public class SearchActivity extends BaseSwipeActivity {
     private RelativeLayout mTitle;
     private RelativeLayout mReItemOne;
     private TextView mFlowLayoutOne;
-    private TagCloudLayout mFlowLayoutOneItem;
+    private FlowLayout mFlowLayoutOneItem;
     private RelativeLayout mReItemTwo;
     private TextView mFlowLayoutTwo;
-    private TagCloudLayout mFlowLayoutTwoItem;
+    private FlowLayout mFlowLayoutTwoItem;
     private TextView mFlowLayoutThree;
-    private TagCloudLayout mFlowLayoutThreeItem;
+    private FlowLayout mFlowLayoutThreeItem;
 
     private List<String> mHotOuterCityName = new ArrayList<>();
     private List<String> mHotInnerCityName = new ArrayList<>();
@@ -105,20 +110,28 @@ public class SearchActivity extends BaseSwipeActivity {
                                     mHotCityName.add(dataBean.getName());
                                 }
                             }
+                            if (mHotCityName.size() >0) {
+                                for (int i = 0; i < mHotCityName.size(); i++) {
+                                    mFlowLayoutThreeItem.addView(getLabel(mHotInnerCityName.get(i)),
+                                            mFlowLayoutThreeItem.getChildCount() - 1, new ViewGroup
+                                                    .MarginLayoutParams(ViewGroup.MarginLayoutParams.WRAP_CONTENT,
+                                                    ViewGroup.MarginLayoutParams.WRAP_CONTENT));
+                                }
+                            }
 
-                            mFlowLayoutThreeItem.setAdapter(
-                                    new TagBaseAdapter(SearchActivity.this,
-                                            mHotCityName)
-                            );
-                            mFlowLayoutThreeItem.setItemClickListener(
-                                    new TagCloudLayout.TagItemClickListener() {
-                                        @Override
-                                        public void itemClick(int position) {
-                                            Toast.makeText(SearchActivity.this,
-                                                    mHotCityName.get(position),
-                                                    Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
+//                            mFlowLayoutThreeItem.setAdapter(
+//                                    new TagBaseAdapter(SearchActivity.this,
+//                                            mHotCityName)
+//                            );
+//                            mFlowLayoutThreeItem.setItemClickListener(
+//                                    new TagCloudLayout.TagItemClickListener() {
+//                                        @Override
+//                                        public void itemClick(int position) {
+//                                            Toast.makeText(SearchActivity.this,
+//                                                    mHotCityName.get(position),
+//                                                    Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    });
                         }
                     }
                 });
@@ -147,32 +160,46 @@ public class SearchActivity extends BaseSwipeActivity {
             }
 
             if (mHotOuterCityName.size() > 0) {
-                TagBaseAdapter tagBaseAdapter = new TagBaseAdapter(SearchActivity.this,
-                        mHotOuterCityName);
-                mFlowLayoutTwoItem.setAdapter(tagBaseAdapter);
-                mFlowLayoutTwoItem.setItemClickListener(new TagCloudLayout
-                        .TagItemClickListener() {
-                    @Override
-                    public void itemClick(int position) {
-                        Toast.makeText(SearchActivity.this,
-                                mHotOuterCityName.get(position).toString(),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                TagBaseAdapter tagBaseAdapter = new TagBaseAdapter(SearchActivity.this,
+//                        mHotOuterCityName);
+//                mFlowLayoutTwoItem.setAdapter(tagBaseAdapter);
+//                mFlowLayoutTwoItem.setItemClickListener(new TagCloudLayout
+//                        .TagItemClickListener() {
+//                    @Override
+//                    public void itemClick(int position) {
+//                        Toast.makeText(SearchActivity.this,
+//                                mHotOuterCityName.get(position).toString(),
+//                                Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+
+                for (int i = 0; i < mHotOuterCityName.size(); i++) {
+                    mFlowLayoutTwoItem.addView(getLabel(mHotOuterCityName.get(i)),
+                            mFlowLayoutTwoItem.getChildCount() - 1, new ViewGroup
+                                    .MarginLayoutParams(ViewGroup.MarginLayoutParams.WRAP_CONTENT,
+                                    ViewGroup.MarginLayoutParams.WRAP_CONTENT));
+                }
             }
 
             if (mHotInnerCityName.size() > 0) {
                 TagBaseAdapter tagBaseAdapter = new TagBaseAdapter(
                         SearchActivity.this, mHotInnerCityName);
-                mFlowLayoutThreeItem.setAdapter(tagBaseAdapter);
-                mFlowLayoutThreeItem.setItemClickListener(new TagCloudLayout
-                        .TagItemClickListener() {
-                    @Override
-                    public void itemClick(int position) {
-                        Toast.makeText(SearchActivity.this,
-                                mHotInnerCityName.get(position).toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                mFlowLayoutThreeItem.setAdapter(tagBaseAdapter);
+//                mFlowLayoutThreeItem.setItemClickListener(new TagCloudLayout
+//                        .TagItemClickListener() {
+//                    @Override
+//                    public void itemClick(int position) {
+//                        Toast.makeText(SearchActivity.this,
+//                                mHotInnerCityName.get(position).toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+                for (int i = 0; i < mHotInnerCityName.size(); i++) {
+                    mFlowLayoutThreeItem.addView(getLabel(mHotInnerCityName.get(i)),
+                            mFlowLayoutThreeItem.getChildCount() - 1, new ViewGroup
+                                    .MarginLayoutParams(ViewGroup.MarginLayoutParams.WRAP_CONTENT,
+                                    ViewGroup.MarginLayoutParams.WRAP_CONTENT));
+                }
+
             }
         }
         mEditText.setHint(getResources().getString(R.string.is_come_from_hot_trip_tip));
@@ -187,11 +214,32 @@ public class SearchActivity extends BaseSwipeActivity {
         mReItemOne = (RelativeLayout) findViewById(R.id.re_item_one);
         mFlowLayoutOne = (TextView) findViewById(R.id.flow_layout_one);
         mReItemTwo = (RelativeLayout) findViewById(R.id.re_item_two);
-        mFlowLayoutOneItem = (TagCloudLayout) findViewById(R.id.flow_layout_one_item);
+        mFlowLayoutOneItem = (FlowLayout) findViewById(R.id.flow_layout_one_item);
         mFlowLayoutTwo = (TextView) findViewById(R.id.flow_layout_two);
-        mFlowLayoutTwoItem = (TagCloudLayout) findViewById(R.id.flow_layout_two_item);
+        mFlowLayoutTwoItem = (FlowLayout) findViewById(R.id.flow_layout_two_item);
         mFlowLayoutThree = (TextView) findViewById(R.id.flow_layout_three);
-        mFlowLayoutThreeItem = (TagCloudLayout) findViewById(R.id.flow_layout_three_item);
+        mFlowLayoutThreeItem = (FlowLayout) findViewById(R.id.flow_layout_three_item);
         mSearchDbHelper = SearchDbHelper.getSearchDbHelper(this);
     }
+
+    private TextView getLabel(String text) {
+        TextView label = new TextView(this);
+        label.setTextColor(Color.WHITE);
+        label.setBackgroundResource(R.drawable.flow_view_bg_corner);
+        label.setGravity(Gravity.CENTER);
+        label.setSingleLine(true);
+        label.setEllipsize(TextUtils.TruncateAt.END);
+        int padding = FlowLayout.dp2px(this, 5);
+        label.setPadding(padding, padding, padding, padding);
+        label.setText(text);
+        //在这里设置点击事件
+        label.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SearchActivity.this, text.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return label;
+    }
+
 }
