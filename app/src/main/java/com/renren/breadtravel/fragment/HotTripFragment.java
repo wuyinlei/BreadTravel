@@ -160,6 +160,8 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
     private void parseJson(String s) {
 
         mDetailBeanDatas.clear();
+        mHotInnerCity.clear();
+        mHotOuterCity.clear();
         try {
             JSONObject jsonObject = new JSONObject(s);
             if (jsonObject.getString("status").equals("0")) {

@@ -40,5 +40,21 @@ public class HttpUrlPath {
                 + start + "&count=" + count + "&country=" + country;
     }
 
+    /**
+     * 热门搜索
+     */
+    public static final String IS_HOT_CITY_LIST_URL = "http://api.breadtrip.com/product/search/hot/";
+
+    //http://api.breadtrip.com/product/search/?keyword=东京
+
+    /**
+     * 热门城市搜索跳转之后的那个搜索界面进行搜索的url
+     *
+     * @param key 搜索key值
+     * @return
+     */
+    public static final String getSerachData(String key) {
+        return BASE_URL + "product/search/?keyword=" + key;
+    }
 
 }
