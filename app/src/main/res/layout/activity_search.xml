@@ -22,10 +22,13 @@
             android:layout_marginLeft="@dimen/dp_18"
             android:layout_marginRight="@dimen/dp_18"
             android:layout_marginTop="5dp"
+            android:textCursorDrawable="@null"
             android:layout_toLeftOf="@+id/tv_cancel"
             android:background="@drawable/edit_text_view_bg_corner"
             android:gravity="center|left"
             android:textSize="@dimen/dp_14"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
             android:paddingLeft="@dimen/dp_18"
             android:textColor="@color/white"
             android:textColorHint="@color/white"/>
@@ -54,6 +57,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/re_item_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

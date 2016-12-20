@@ -109,6 +109,10 @@
         </activity>
         <activity android:name=".ui.SearchActivity">
         </activity>
+        <activity android:name=".ui.SearchResultActivity">
+        </activity>
+        <activity android:name=".ui.SerachResultItemActivity">
+        </activity>
     </application>
 
 </manifest>

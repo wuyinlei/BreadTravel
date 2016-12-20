@@ -80,7 +80,16 @@ public class FlowLayout extends ViewGroup {
         View child;
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
+            final int pos = i;
             child = getChildAt(i);
+            child.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnItemClickListener != null){
+                        mOnItemClickListener.OnItemClick(view,pos);
+                    }
+                }
+            });
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
             if (!row.addChild(child)) {
                 mRows.add(row);
@@ -192,6 +201,16 @@ public class FlowLayout extends ViewGroup {
                 left += childWidth + mHorizontalChildGap;
             }
         }
+    }
+
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void OnItemClick(View view, int position);
     }
 
     public static int dp2px(Context context, float dpValue) {
