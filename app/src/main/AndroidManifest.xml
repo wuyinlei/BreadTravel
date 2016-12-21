@@ -29,7 +29,7 @@
         android:theme="@style/BaseAppThemeLight">
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/BaseAppThemeLight">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

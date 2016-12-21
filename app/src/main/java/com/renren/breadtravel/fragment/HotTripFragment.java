@@ -59,7 +59,8 @@ import okhttp3.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HotTripFragment extends BaseLeftFragment implements OnRefreshListener, OnLoadMoreListener, View.OnClickListener {
+public class HotTripFragment extends BaseLeftFragment implements
+        OnRefreshListener, OnLoadMoreListener, View.OnClickListener {
 
 
     private Bundle saveState;
@@ -89,7 +90,8 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
     }
 
     @Override
-    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected View initView(LayoutInflater inflater, ViewGroup container,
+                            Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_hot_trip, container, false);
         mLRecyclerView = (LRecyclerView) mView.findViewById(R.id.recycler_view);
         mDetailAdapter = new DetailAdapter(getActivity(), mDetailBeanDatas);
@@ -168,7 +170,8 @@ public class HotTripFragment extends BaseLeftFragment implements OnRefreshListen
                 JSONObject dataResults = jsonObject.getJSONObject("data");  //data
 
                 next_start = dataResults.getString("next_start");
-                //Toast.makeText(getActivity(), "next_start:" + next_start, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "next_start:" + next_start,
+                // Toast.LENGTH_SHORT).show();
 
                 JSONArray mSearchDataArray = dataResults.getJSONArray("search_data");
 

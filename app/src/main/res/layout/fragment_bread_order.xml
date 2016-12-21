@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -8,18 +9,20 @@
         android:id="@+id/title"
         layout="@layout/activity_home_title_bar"
         />
-        <android.support.design.widget.TabLayout
-            android:layout_below="@+id/title"
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        />
 
     <FrameLayout
-        android:layout_below="@+id/title"
-        android:layout_alignParentRight="true"
         android:layout_width="40dp"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/title">
+
         <ImageView
             android:id="@+id/img_arrow"
             android:layout_width="40dp"
@@ -35,6 +38,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tab_layout"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/dp_22"
+        android:layout_marginRight="@dimen/dp_22">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:src="@drawable/img_draft_tip_icon"
+            app:backgroundTint="@color/color_home_title_bg"
+          />
+    </FrameLayout>
 
 
 </RelativeLayout>

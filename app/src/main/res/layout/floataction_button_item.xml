@@ -1,0 +1,39 @@
+<com.renren.breadtravel.widget.floatingactionbutton.FloatingActionButtonPlus xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/FabPlus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="com.renren.breadtravel.widget.floatingactionbutton.FabBehavior"
+    app:mBackgroundColor="#87000000"
+    app:switchFabColor="@color/color_home_title_bg"
+    app:switchFabIcon="@drawable/ic_add_white_48dp">
+
+    <com.renren.breadtravel.widget.floatingactionbutton.FabTagLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tagText="生活故事">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/im_photo"
+            app:backgroundTint="@color/color_home_title_bg"
+            app:fabSize="mini" />
+    </com.renren.breadtravel.widget.floatingactionbutton.FabTagLayout>
+
+    <com.renren.breadtravel.widget.floatingactionbutton.FabTagLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tagText="长篇游记">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_draft_tip_icon"
+            app:backgroundTint="@color/color_home_title_bg"
+            app:fabSize="mini" />
+    </com.renren.breadtravel.widget.floatingactionbutton.FabTagLayout>
+
+
+
+</com.renren.breadtravel.widget.floatingactionbutton.FloatingActionButtonPlus>
