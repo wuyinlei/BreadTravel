@@ -53,8 +53,15 @@ public class HttpUrlPath {
      * @param key 搜索key值
      * @return
      */
-    public static final String getSerachData(String key) {
+    public static final String getSerachHotData(String key) {
         return BASE_URL + "product/search/?keyword=" + key;
+    }
+
+
+    //http://api.breadtrip.com/v2/search/?key=上海&start=0&count=20&data_type=
+
+    public static final String getSearchTripResult(String key){
+        return BASE_URL+ "v2/search/?key=" + key;
     }
 
 }
