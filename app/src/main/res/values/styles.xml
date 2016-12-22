@@ -22,24 +22,33 @@
 
 
     <style name="Card">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">200dp</item>
+    <item name="android:layout_marginBottom">16dp</item>
+
+    <item name="cardBackgroundColor">@android:color/white</item>
+    <item name="cardCornerRadius">@dimen/dp_6</item>
+    <item name="cardElevation">@dimen/dp_4</item>
+</style>
+    <style name="Card_bg">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">200dp</item>
-        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
 
         <item name="cardBackgroundColor">@android:color/white</item>
-        <item name="cardCornerRadius">@dimen/dp_6</item>
-        <item name="cardElevation">@dimen/dp_4</item>
+        <item name="cardCornerRadius">@dimen/dp_4</item>
+        <item name="cardElevation">@dimen/dp_2</item>
     </style>
 
 
     <style name="CardPhoto">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:tint">@color/photo_tint</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:tint">@color/photo_tint</item>
 
-        <item name="android:scaleType">centerCrop</item>
-        <item name="riv_corner_radius">6dp</item>
-    </style>
+    <item name="android:scaleType">centerCrop</item>
+    <item name="riv_corner_radius">6dp</item>
+</style>
 
     <style name="DetailStyle">
         <item name="android:layout_width">wrap_content</item>

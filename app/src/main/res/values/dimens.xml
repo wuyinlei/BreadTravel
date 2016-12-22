@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
 
+    <dimen name="dp_2">2dp</dimen>
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_6">6dp</dimen>
     <dimen name="dp_10">10dp</dimen>

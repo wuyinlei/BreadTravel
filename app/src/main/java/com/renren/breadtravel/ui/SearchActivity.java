@@ -107,11 +107,13 @@ public class SearchActivity extends BaseSwipeActivity {
 //                    }
 //                });
 
-                Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
-                intent.putExtra("key", trim);
-                //发现他们跳转不是同一个结果
-                intent.putExtra(Constants.IS_SEARCH_COME_FROM_HOT_TRIP,is_from_hot_trip);
-                startActivity(intent);
+                if (is_from_hot_trip) {
+
+                } else {
+                    Intent intent = new Intent(SearchActivity.this,HotCitySearchActivity.class);
+                    intent.putExtra("key",trim);
+                    startActivity(intent);
+                }
 
             }
             return false;
@@ -152,6 +154,18 @@ public class SearchActivity extends BaseSwipeActivity {
                                     .MarginLayoutParams(ViewGroup.MarginLayoutParams.WRAP_CONTENT,
                                     ViewGroup.MarginLayoutParams.WRAP_CONTENT));
                 }
+
+                mFlowLayoutOneItem.setOnItemClickListener(new FlowLayout.OnItemClickListener() {
+                    @Override
+                    public void OnItemClick(View view, int position) {
+
+                        Intent intent = new Intent(SearchActivity.this, SearchKeyActivity.class);
+                        intent.putExtra("key", mHistoryKey.get(position));
+                        //发现他们跳转不是同一个结果
+                        // intent.putExtra(Constants.IS_SEARCH_COME_FROM_HOT_TRIP,is_from_hot_trip);
+                        startActivity(intent);
+                    }
+                });
             }
         } else {
             List<String> strings = mSearchDbHelper.queryHotData();

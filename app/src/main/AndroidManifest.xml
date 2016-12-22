@@ -113,6 +113,10 @@
         </activity>
         <activity android:name=".ui.SerachResultItemActivity">
         </activity>
+        <activity android:name=".ui.SearchKeyActivity">
+        </activity>
+        <activity android:name=".ui.HotCitySearchActivity">
+        </activity>
     </application>
 
 </manifest>

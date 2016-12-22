@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public class SearchCityAdapter extends SimpleAdapter<TripSearchData.DataBean.PlacesBean> {
-    public SearchCityAdapter(Context context, int layoutResId, List<TripSearchData.DataBean.PlacesBean> datas) {
+    public SearchCityAdapter(Context context,  List<TripSearchData.DataBean.PlacesBean> datas) {
         super(context, R.layout.search_city_item_layout, datas);
     }
 

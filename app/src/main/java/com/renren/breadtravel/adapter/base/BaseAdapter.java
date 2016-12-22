@@ -118,7 +118,7 @@ public abstract class BaseAdapter  <T,H extends  BaseViewHolder> extends Recycle
 
 
 
-    public void addData(List<T> datas){
+    public void setDatas(List<T> datas){
 
         addData(0,datas);
     }

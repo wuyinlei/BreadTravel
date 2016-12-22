@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:id="@+id/activity_serach_result_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.renren.breadtravel.ui.SerachResultItemActivity">
 
-    <RelativeLayout
-        android:id="@+id/activity_serach_result_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/title"
@@ -49,7 +45,6 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/re_destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,12 +66,11 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/re_trip_story"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/re_destination"
-        android:layout_marginTop="@dimen/dp_10">
+        android:layout_marginTop="@dimen/dp_22">
 
         <TextView
             android:id="@+id/tv_story"
@@ -87,7 +81,6 @@
             android:text="相关游记 &amp; 故事集  >"/>
 
         <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="@dimen/dp_10"
             android:id="@+id/recycler_view_story"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,7 +89,6 @@
 
     <RelativeLayout
         android:id="@+id/re_user"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/re_trip_story"
@@ -117,5 +109,4 @@
             android:layout_below="@+id/tv_user"/>
     </RelativeLayout>
 
-    </RelativeLayout>
-</ScrollView>
+</RelativeLayout>

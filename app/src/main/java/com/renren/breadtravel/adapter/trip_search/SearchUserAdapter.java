@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 public class SearchUserAdapter extends SimpleAdapter<TripSearchData.DataBean.UsersBean> {
-    public SearchUserAdapter(Context context, int layoutResId, List<TripSearchData.DataBean.UsersBean> datas) {
+    public SearchUserAdapter(Context context, List<TripSearchData.DataBean.UsersBean> datas) {
         super(context, R.layout.search_mianyou_item_layout, datas);
     }
 

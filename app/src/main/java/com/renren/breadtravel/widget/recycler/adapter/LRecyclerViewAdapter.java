@@ -38,14 +38,22 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     private ArrayList<View> mHeaderViews = new ArrayList<>();
     private ArrayList<View> mFooterViews = new ArrayList<>();
 
-    private SpanSizeLookup mSpanSizeLookup;
 
-
+    /**
+     * 构造
+     *
+     * @param innerAdapter 用户需要实现的adapter
+     */
     public LRecyclerViewAdapter(RecyclerView.Adapter innerAdapter) {
         this.mInnerAdapter = innerAdapter;
     }
 
-    public void setRefreshHeader(ArrowRefreshHeader refreshHeader){
+    /**
+     * 设置刷新显示的HeadView
+     *
+     * @param refreshHeader headView
+     */
+    public void setRefreshHeader(ArrowRefreshHeader refreshHeader) {
         mRefreshHeader = refreshHeader;
     }
 
@@ -53,6 +61,11 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
         return mInnerAdapter;
     }
 
+    /**
+     * 添加HeadView  可以多个添加
+     *
+     * @param view 需要添加的view
+     */
     public void addHeaderView(View view) {
 
         if (view == null) {
@@ -63,23 +76,31 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
         mHeaderViews.add(view);
     }
 
+    /**
+     * 添加FooterView
+     *
+     * @param view 需要添加的view
+     */
     public void addFooterView(View view) {
 
         if (view == null) {
             throw new RuntimeException("footer is null");
         }
-
-        removeFooterView();
+        if (getFooterViewsCount() > 0) {
+            removeFooterView(getFooterView());
+        }
         mFooterViews.add(view);
+        //this.notifyDataSetChanged();
     }
 
     /**
      * 根据header的ViewType判断是哪个header
-     * @param itemType
-     * @return
+     *
+     * @param itemType 显示的item类型
+     * @return 类型
      */
     private View getHeaderViewByType(int itemType) {
-        if(!isHeaderType(itemType)) {
+        if (!isHeaderType(itemType)) {
             return null;
         }
         return mHeaderViews.get(itemType - HEADER_INIT_INDEX);
@@ -87,67 +108,106 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     /**
      * 判断一个type是否为HeaderType
-     * @param itemViewType
-     * @return
+     *
+     * @param itemViewType 头view
+     * @return true / false
      */
     private boolean isHeaderType(int itemViewType) {
-        return  mHeaderViews.size() > 0 &&  mHeaderTypes.contains(itemViewType);
+        return mHeaderViews.size() > 0 && mHeaderTypes.contains(itemViewType);
     }
 
     /**
      * 返回第一个FootView
-     * @return
+     *
+     * @return FooterView
      */
     public View getFooterView() {
-        return  getFooterViewsCount()>0 ? mFooterViews.get(0) : null;
+        return getFooterViewsCount() > 0 ? mFooterViews.get(0) : null;
     }
 
     /**
      * 返回第一个HeaderView
-     * @return
+     *
+     * @return HeaderView
      */
     public View getHeaderView() {
-        return  getHeaderViewsCount()>0 ? mHeaderViews.get(0) : null;
+        return getHeaderViewsCount() > 0 ? mHeaderViews.get(0) : null;
     }
 
+    /**
+     * 返回HeaderView的集合
+     *
+     * @return views
+     */
     public ArrayList<View> getHeaderViews() {
         return mHeaderViews;
     }
 
-    public void removeHeaderView() {
-        if (getHeaderViewsCount() > 0) {
-            View headerView = getHeaderView();
-            mHeaderViews.remove(headerView);
-            this.notifyDataSetChanged();
-        }
-
+    /**
+     * 移除HeaderView
+     *
+     * @param view 需要移除的view
+     */
+    public void removeHeaderView(View view) {
+        mHeaderViews.remove(view);
+        this.notifyDataSetChanged();
     }
 
-    public void removeFooterView() {
-        if (getFooterViewsCount() > 0) {
-            View footerView = getFooterView();
-            mFooterViews.remove(footerView);
-            this.notifyDataSetChanged();
-        }
-
+    /**
+     * 移除FooterView
+     *
+     * @param view 需要移除的FooterView
+     */
+    public void removeFooterView(View view) {
+        mFooterViews.remove(view);
+        this.notifyDataSetChanged();
     }
 
+    /**
+     * 获取HeaderView的个数
+     *
+     * @return count
+     */
     public int getHeaderViewsCount() {
         return mHeaderViews.size();
     }
 
+    /**
+     * 获取FooterView的个数
+     *
+     * @return count
+     */
     public int getFooterViewsCount() {
         return mFooterViews.size();
     }
 
+    /**
+     * 判断该位置是否是HeaderView
+     *
+     * @param position position
+     * @return true / false
+     */
     public boolean isHeader(int position) {
         return position >= 1 && position < mHeaderViews.size() + 1;
     }
 
+    /**
+     * 是否是刷新的HeaderView
+     *
+     * @param position position
+     * @return true / false
+     */
     public boolean isRefreshHeader(int position) {
         return position == 0;
     }
 
+
+    /**
+     * 判断该位置是否是FooterView
+     *
+     * @param position position
+     * @return true / false
+     */
     public boolean isFooter(int position) {
         int lastPosition = getItemCount() - getFooterViewsCount();
         return getFooterViewsCount() > 0 && position >= lastPosition;
@@ -156,14 +216,14 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        if (viewType == TYPE_REFRESH_HEADER) {
+        if (viewType == TYPE_REFRESH_HEADER) {  //刷新Header
             return new ViewHolder(mRefreshHeader);
-        } else if (isHeaderType(viewType)) {
+        } else if (isHeaderType(viewType)) {  //HeaderView
             return new ViewHolder(getHeaderViewByType(viewType));
-        } else if (viewType == TYPE_FOOTER_VIEW) {
+        } else if (viewType == TYPE_FOOTER_VIEW) { //FooterView
             return new ViewHolder(mFooterViews.get(0));
         }
-        return mInnerAdapter.onCreateViewHolder(parent, viewType);
+        return mInnerAdapter.onCreateViewHolder(parent, viewType);  //数据view
     }
 
     @Override
@@ -179,10 +239,9 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
                 mInnerAdapter.onBindViewHolder(holder, adjPosition);
 
                 if (mOnItemClickListener != null) {
-                    holder.itemView.setOnClickListener(new View.OnClickListener()  {
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v)
-                        {
+                        public void onClick(View v) {
                             mOnItemClickListener.onItemClick(holder.itemView, adjPosition);
                         }
                     });
@@ -192,8 +251,7 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
                 if (mOnItemLongClickListener != null) {
                     holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
-                        public boolean onLongClick(View v)
-                        {
+                        public boolean onLongClick(View v) {
                             mOnItemLongClickListener.onItemLongClick(holder.itemView, adjPosition);
                             return true;
                         }
@@ -207,7 +265,7 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position, List<Object> payloads) {
         if (payloads.isEmpty()) {
-            onBindViewHolder(holder,position);
+            onBindViewHolder(holder, position);
         } else {
 
             if (isHeader(position) || isRefreshHeader(position)) {
@@ -227,9 +285,12 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemCount() {
-        if (mInnerAdapter != null) {
+        if (mInnerAdapter != null) {  //如果adapter不为空  那么返回来的count就是
+            //count = HeaderViews + FooterViews + adapter.getItemCount() + 1 (这个1代表着下拉刷新的头布局)
             return getHeaderViewsCount() + getFooterViewsCount() + mInnerAdapter.getItemCount() + 1;
         } else {
+            //如果adapter为空  那么返回来的count就是
+            //count = HeaderViews + FooterViews + (这个1代表着下拉刷新的头布局)
             return getHeaderViewsCount() + getFooterViewsCount() + 1;
         }
     }
@@ -237,19 +298,19 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public int getItemViewType(int position) {
         int adjPosition = position - (getHeaderViewsCount() + 1);
-        if (isRefreshHeader(position)) {
+        if (isRefreshHeader(position)) {  //当前的position是否是刷新头布局
             return TYPE_REFRESH_HEADER;
         }
-        if (isHeader(position)) {
+        if (isHeader(position)) { //当前的position是否是HeaderView
             position = position - 1;
             return mHeaderTypes.get(position);
         }
-        if (isFooter(position)) {
+        if (isFooter(position)) {  //当前的position是否是FooterView
             return TYPE_FOOTER_VIEW;
         }
-        int adapterCount;
+        int adapterCount;  //adapter的数量
         if (mInnerAdapter != null) {
-            adapterCount = mInnerAdapter.getItemCount();
+            adapterCount = mInnerAdapter.getItemCount(); //获取adapter的数量
             if (adjPosition < adapterCount) {
                 return mInnerAdapter.getItemViewType(adjPosition);
             }
@@ -278,14 +339,8 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
             gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    if (mSpanSizeLookup == null) {
-                        return (isHeader(position) || isFooter(position) || isRefreshHeader(position))
-                                ? gridManager.getSpanCount() : 1;
-                    } else {
-                        return (isHeader(position) || isFooter(position) || isRefreshHeader(position))
-                                ? gridManager.getSpanCount() : mSpanSizeLookup.getSpanSize(gridManager,  (position - (getHeaderViewsCount() + 1)));
-                    }
-
+                    return (isHeader(position) || isFooter(position) || isRefreshHeader(position))
+                            ? gridManager.getSpanCount() : 1;
                 }
             });
         }
@@ -302,7 +357,7 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
         super.onViewAttachedToWindow(holder);
         ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
         if (lp != null && lp instanceof StaggeredGridLayoutManager.LayoutParams) {
-            if(isHeader(holder.getLayoutPosition()) ||isRefreshHeader(holder.getLayoutPosition()) || isFooter(holder.getLayoutPosition())) {
+            if (isHeader(holder.getLayoutPosition()) || isRefreshHeader(holder.getLayoutPosition()) || isFooter(holder.getLayoutPosition())) {
                 StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams) lp;
                 p.setFullSpan(true);
             }
@@ -329,42 +384,40 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     /**
-     *
      * @param isCallback whether position is from callback interface
-     * @param position
-     * @return
+     * @param position   position
+     * @return 位置
      */
     public int getAdapterPosition(boolean isCallback, int position) {
-        if(isCallback) {
+        if (isCallback) {
             int adjPosition = position - (getHeaderViewsCount() + 1);
             int adapterCount = mInnerAdapter.getItemCount();
             if (adjPosition < adapterCount) {
                 return adjPosition;
             }
-        }else {
-            return  (position + getHeaderViewsCount()) + 1;
+        } else {
+            return (position + getHeaderViewsCount()) + 1;
         }
 
         return -1;
     }
 
+    /**
+     * 设置点击事件
+     *
+     * @param itemClickListener 监听
+     */
     public void setOnItemClickListener(OnItemClickListener itemClickListener) {
         this.mOnItemClickListener = itemClickListener;
     }
 
+    /**
+     * 长按事件
+     *
+     * @param itemLongClickListener 长按监听
+     */
     public void setOnItemLongClickListener(OnItemLongClickListener itemLongClickListener) {
         this.mOnItemLongClickListener = itemLongClickListener;
     }
 
-    public interface SpanSizeLookup {
-        int getSpanSize(GridLayoutManager gridLayoutManager, int position);
-    }
-
-    /**
-     * @param spanSizeLookup
-     * only used to GridLayoutManager
-     */
-    public void setSpanSizeLookup(SpanSizeLookup spanSizeLookup) {
-        this.mSpanSizeLookup = spanSizeLookup;
-    }
 }

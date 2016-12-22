@@ -111,6 +111,7 @@ public class HotTripFragment extends BaseLeftFragment implements
 
         mLRecyclerView.setOnLoadMoreListener(this);
 
+
         mLRecyclerView.setRefreshing(true);
 
         mIvNav = (ImageView) mView.findViewById(R.id.img_nav);

@@ -1,6 +1,7 @@
 package com.renren.breadtravel.adapter.trip_search;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.renren.breadtravel.R;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 
 public class SearchTripAdapter extends SimpleAdapter<TripSearchData.DataBean.TripsBean> {
-    public SearchTripAdapter(Context context, int layoutResId, List<TripSearchData.DataBean.TripsBean> datas) {
+    public SearchTripAdapter(Context context,  List<TripSearchData.DataBean.TripsBean> datas) {
         super(context, R.layout.search_trip_item_layout, datas);
     }
 
@@ -24,14 +25,20 @@ public class SearchTripAdapter extends SimpleAdapter<TripSearchData.DataBean.Tri
     protected void convert(BaseViewHolder viewHoder, TripSearchData.DataBean.TripsBean item) {
         Glide.with(context)
                 .load(item.cover_image_default)
-                .asBitmap().into(viewHoder.getImageView(R.id.img_bg));
+                .asBitmap().into(viewHoder.getImageView(R.id.photo));
         viewHoder.getTextView(R.id.tv_title).setText(item.name);
+        Log.d(TAG, item.date_added);
+        String date = item.date_added;
+        //long l = Long.parseLong(date);
+        String realDate  = date.substring(0,date.length()-2);
+
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-        String format1 = format.format(item.date_added);
-        viewHoder.getTextView(R.id.tv_time).setText(format1);
-        viewHoder.getTextView(R.id.tv_zuji).setText(item.waypoints);
+        Long data = Long.parseLong(realDate) * 1000;
+        String format1 = format.format(data);
+        viewHoder.getTextView(R.id.tv_time).setText(format1.toString());
+        viewHoder.getTextView(R.id.tv_zuji).setText(item.waypoints + "");
         viewHoder.getTextView(R.id.tv_view_count).setText(item.view_count);
-        viewHoder.getTextView(R.id.tv_liked_count).setText(item.liked_count);
-        viewHoder.getTextView(R.id.tv_comment_count).setText(item.total_comments_count);
+        viewHoder.getTextView(R.id.tv_liked_count).setText(item.liked_count + "");
+        viewHoder.getTextView(R.id.tv_comment_count).setText(item.total_comments_count + "");
     }
 }
