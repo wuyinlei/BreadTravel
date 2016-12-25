@@ -1,5 +1,6 @@
 package com.renren.breadtravel.ui;
 
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,7 +30,7 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class SearchKeyActivity extends BaseSwipeActivity {
+public class SearchKeyActivity extends BaseSwipeActivity implements View.OnClickListener {
 
     private RelativeLayout mActivitySerachResultItem;
     private RelativeLayout mTitle;
@@ -61,7 +62,8 @@ public class SearchKeyActivity extends BaseSwipeActivity {
 
     @Override
     protected void initListener() {
-
+        mTvUser.setOnClickListener(this);
+        mTvStory.setOnClickListener(this);
     }
 
     @Override
@@ -141,6 +143,7 @@ public class SearchKeyActivity extends BaseSwipeActivity {
                                 mUsersBeen = data.data.users;
                                 if (mUsersBeen.size() > 0){
                                     mReUser.setVisibility(View.VISIBLE);
+
                                     mSearchUserAdapter.setDatas(mUsersBeen);
                                 }
                                 mTripsBeen = data.data.trips;
@@ -151,6 +154,22 @@ public class SearchKeyActivity extends BaseSwipeActivity {
                             }
                         }
                     });
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_user:
+                Intent intentUser = new Intent(SearchKeyActivity.this,SearchUserActivity.class);
+                intentUser.putExtra("key",search_key);
+                startActivity(intentUser);
+                break;
+            case R.id.tv_story:
+                Intent intentScene = new Intent(SearchKeyActivity.this,SearchSceneActivity.class);
+                intentScene.putExtra("key",search_key);
+                startActivity(intentScene);
+                break;
         }
     }
 }

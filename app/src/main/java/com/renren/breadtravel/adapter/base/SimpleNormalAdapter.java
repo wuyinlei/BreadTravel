@@ -8,13 +8,13 @@ import java.util.List;
  * Created by wuyinlei on 2016/12/21.
  */
 
-public abstract class SimpleAdapter <T> extends BaseAdapter<T,BaseViewHolder> {
+public abstract class SimpleNormalAdapter<T> extends BaseAdapter<T,BaseViewHolder> {
 
-    public SimpleAdapter(Context context, int layoutResId) {
+    public SimpleNormalAdapter(Context context, int layoutResId) {
         super(context, layoutResId);
     }
 
-    public SimpleAdapter(Context context, int layoutResId, List<T> datas) {
+    public SimpleNormalAdapter(Context context, int layoutResId, List<T> datas) {
         super(context, layoutResId, datas);
     }
 }

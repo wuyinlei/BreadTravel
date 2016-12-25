@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.renren.breadtravel.ui.SearchSceneActivity">
+
+    <RelativeLayout
+        android:background="@color/color_home_title_bg"
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            android:src="@drawable/btn_back"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_22"/>
+
+        <TextView
+            android:textColor="@color/white"
+            android:text="相关面粉"
+            android:id="@+id/tv_title"
+            android:textSize="@dimen/dp_18"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <com.renren.breadtravel.widget.recycler.view.LRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

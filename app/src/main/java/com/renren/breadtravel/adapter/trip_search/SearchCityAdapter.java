@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.adapter.base.BaseViewHolder;
-import com.renren.breadtravel.adapter.base.SimpleAdapter;
+import com.renren.breadtravel.adapter.base.SimpleNormalAdapter;
 import com.renren.breadtravel.entity.TripSearchData;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by wuyinlei on 2016/12/21.
  */
 
-public class SearchCityAdapter extends SimpleAdapter<TripSearchData.DataBean.PlacesBean> {
+public class SearchCityAdapter extends SimpleNormalAdapter<TripSearchData.DataBean.PlacesBean> {
     public SearchCityAdapter(Context context,  List<TripSearchData.DataBean.PlacesBean> datas) {
         super(context, R.layout.search_city_item_layout, datas);
     }

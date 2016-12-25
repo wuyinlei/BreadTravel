@@ -64,4 +64,15 @@ public class HttpUrlPath {
         return BASE_URL+ "v2/search/?key=" + key;
     }
 
+    /**
+     *
+     * @param key
+     * @param type  user   trip
+     * @return
+     */
+    public static final String getSearchTripResultType(String key,String type){
+        return getSearchTripResult(key) + "&start=0&count=20&data_type=" + type;
+    }
+
+
 }

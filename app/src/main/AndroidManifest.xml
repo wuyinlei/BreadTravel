@@ -117,6 +117,10 @@
         </activity>
         <activity android:name=".ui.HotCitySearchActivity">
         </activity>
+        <activity android:name=".ui.SearchUserActivity">
+        </activity>
+        <activity android:name=".ui.SearchSceneActivity">
+        </activity>
     </application>
 
 </manifest>

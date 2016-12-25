@@ -5,7 +5,7 @@ import android.content.Context;
 import com.bumptech.glide.Glide;
 import com.renren.breadtravel.R;
 import com.renren.breadtravel.adapter.base.BaseViewHolder;
-import com.renren.breadtravel.adapter.base.SimpleAdapter;
+import com.renren.breadtravel.adapter.base.SimpleNormalAdapter;
 import com.renren.breadtravel.entity.TripSearchData;
 import com.renren.breadtravel.widget.transform.GlideCircleTransform;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * Created by wuyinlei on 2016/12/21.
  */
 
-public class SearchUserAdapter extends SimpleAdapter<TripSearchData.DataBean.UsersBean> {
+public class SearchUserAdapter extends SimpleNormalAdapter<TripSearchData.DataBean.UsersBean> {
     public SearchUserAdapter(Context context, List<TripSearchData.DataBean.UsersBean> datas) {
         super(context, R.layout.search_mianyou_item_layout, datas);
     }
